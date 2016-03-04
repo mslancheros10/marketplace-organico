@@ -1,8 +1,9 @@
-# Market Place Orgánico
+Market Place Orgánico
 
-Catherine Velandia
-Abimelec Cuesta
-Andrés Delgado
-Alejandro Pérez
-Mario Lancheros
+- Integrantes
+  - Catherine Velandia
+  - Abimelec Cuesta
+  - Andrés Delgado
+  - Alejandro Pérez
+  - Mario Lancheros
 
