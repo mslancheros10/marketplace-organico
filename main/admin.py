@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Farm, Product, Basket, ShoppingItem
+
+from main.models import Farm, Product, Basket, ShoppingItem
 
 # Register your models here.
 admin.site.register(Farm)
