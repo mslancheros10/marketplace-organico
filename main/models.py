@@ -2,13 +2,17 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
+class Provider(models.Model):
+    user = models.OneToOneField(User,null=True)
+    certificado = models.BooleanField(default=False)
+
 class Farm(models.Model):
     name = models.CharField(max_length=100,blank=True)
     latitude = models.CharField(max_length=100,blank=True)
     longitude = models.CharField(max_length=100,blank=True)
     size = models.CharField(max_length=100,blank=True) # 5 hectareas
     type = models.CharField(max_length=100,blank=True) #certified / no_certified
-    provider = models.OneToOneField(User,null=True)
+    provider = models.ForeignKey(Provider,null=True)
 
 class Product(models.Model):
     name = models.CharField(max_length=100,blank=True)
