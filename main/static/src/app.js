@@ -10,7 +10,7 @@
         $routeProvider
             .when('/main', {
                 templateUrl: 'static/src/modules/main/main.tpl.html',
-                controller: 'managerCtrl',
+                controller: 'mainCtrl',
                 controllerAs: 'ctrl'
             })
             .otherwise('/main');
