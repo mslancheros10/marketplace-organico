@@ -4,6 +4,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 import redesSociales.views
+import baskets.views
 
 # Examples:
 # url(r'^$', 'main.views.home', name='home'),
@@ -12,4 +13,5 @@ import redesSociales.views
 urlpatterns = [
     url(r'^$', redesSociales.views.index, name='index'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^baskets/', baskets.views.getBaskets, name='baskets'),
 ]
