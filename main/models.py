@@ -11,7 +11,6 @@ class Farm(models.Model):
     latitude = models.CharField(max_length=100,blank=True)
     longitude = models.CharField(max_length=100,blank=True)
     size = models.CharField(max_length=100,blank=True) # 5 hectareas
-    type = models.CharField(max_length=100,blank=True) #certified / no_certified
     provider = models.ForeignKey(Provider,null=True)
 
 class Product(models.Model):
