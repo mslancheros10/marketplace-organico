@@ -1,4 +1,8 @@
-<div class="container" ng-controller="basketsCtrl as ctrl" ng-init="ctrl.getBaskets()">
+<div align="center" class="container" ng-controller="basketsCtrl as ctrl" ng-init="ctrl.getBaskets()">
+    <div align="center">
+        <img align="center" id="mySpinner" src="static/src/modules/main/img/spinner.gif" ng-show="loading" />
+    </div>
+
     <div class="col-sm-12">
         <div ng-repeat="record in baskets">
             <div class="col-md-4 col-sm-6 col-lg-4 well" style="padding: 5px;">
