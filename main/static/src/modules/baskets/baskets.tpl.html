@@ -15,10 +15,10 @@
                     <slide ng-repeat="product in record.products" active="slide.active">
                         <img ng-src="{{ product.image_url }}" style="margin:auto; height: 300px; width: 100%" alt="{{ product.name }}">
                         <div class="caption">
-                    <h2><strong>{{ product.price | currency:undefined:0}}</strong></h2>
-                    <h3>{{ product.name }}</h3>
+                    <h2><strong>{{ product.quantity * product.price | currency:undefined:0}}</strong></h2>
+                    <h3>({{ product.quantity }}) {{ product.name }}</h3>
                     <h4>
-                        <small>{{ product.unit_value }} {{ product.unit_name }}</small>
+                        <small>{{ product.unit_value }} {{ product.unit_name }} c/u</small>
                     </h4>
                 </div>
                     </slide>
