@@ -13,5 +13,5 @@ import baskets.views
 urlpatterns = [
     url(r'^$', redesSociales.views.index, name='index'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^baskets/', baskets.views.getBaskets, name='baskets'),
+    url(r'^baskets/', baskets.views.get_baskets, name='baskets'),
 ]

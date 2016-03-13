@@ -1,17 +1,18 @@
-from django.http import HttpResponse
-from django.core import serializers
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 import business_logic
-
-# Constants
-JSON = "json"
 
 '''
     REST Service retrieving current baskets
 '''
-def getBaskets(request):
+
+
+@csrf_exempt
+def get_baskets(request):
     if request.method == 'GET':
-        baskets = business_logic.getBasketsFromModel()
-        return HttpResponse(serializers.serialize(JSON, baskets))
+        response = business_logic.get_baskets_from_model()
+        print response
+        return JsonResponse(response,safe=False)
 
 
