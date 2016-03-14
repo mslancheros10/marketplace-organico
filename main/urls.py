@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^$', redesSociales.views.index, name='index'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^baskets/', baskets.views.get_baskets, name='baskets'),
+    url(r'^products/', products.views.get_products, name='products'),
 ]

@@ -17,42 +17,45 @@
         </div>
     </header>
 
-    <!-- Section -->
-    <div align="center" class="container" ng-controller="productsCtrl as ctrl" ng-init="ctrl.getProducts()">
-       <div align="center">
-            <img align="center" id="mySpinner" src="static/src/modules/main/img/spinner.gif" ng-show="loading" />
-        </div>
 
-         <div class="col-sm-12">
-            <div class="row" style="margin-top: 10px;">
-                <div class="col-lg-6 col-lg-offset-3">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="q" placeholder="Buscar productos" ng-model="search"/>
+    <!-- Section -->
+<div align="center" class="container" ng-controller="productsCtrl as ctrl" ng-init="ctrl.getProducts()">
+    <div align="center">
+        <img align="center" id="mySpinner" src="static/src/modules/main/img/spinner.gif" ng-show="loading"/>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="q" placeholder="Buscar productos" ng-model="search"/>
                         <span class="input-group-btn">
                             <button class="btn btn-success" type="button"><i class="fa fa-search"> Buscar</i></button>
                         </span>
-                    </div>
-                    <br /><br />
                 </div>
+                <br/><br/>
             </div>
-            <div ng-repeat="product in products | filter: search">
-                <div class="col-md-4 col-sm-6 col-lg-4 well" style="padding: 5px;">
+        </div>
+        <div ng-repeat="product in products | filter: search">
+            <div class="col-md-4 col-sm-6 col-lg-4 well" style="padding: 5px;">
+                <div class="caption">
+                    <h4 align="center"><strong>{{ product.name }}</strong></h4>
+                    <img ng-src="{{ product.image_url }}" style="margin:auto; height: 300px; width: 100%"
+                         alt="{{ product.name }}">
                     <div class="caption">
-                        <h4 align="center"><strong>{{ product.name }}</strong></h4>
-                        <img ng-src="{{ product.image_url }}" style="margin:auto; height: 300px; width: 100%" alt="{{ product.name }}">
-                        <div class="caption">
-                            <h2><strong>{{ product.price | currency:undefined:0}}</strong></h2>
-                            <h4>
-                                <small>{{ product.unit_value }} {{ product.unit_name }} c/u</small>
-                            </h4>
-                        </div>
-                        <p><button type="button" class="btn btn-success"><strong>ver detalle</strong></button></p>
+                        <h2><strong>{{ product.price | currency:undefined:0}}</strong></h2>
+                        <h4>
+                            <small>{{ product.unit_value }} {{ product.unit_name }} c/u</small>
+                        </h4>
                     </div>
+                    <p>
+                        <button type="button" class="btn btn-success"><strong>VER DETALLE</strong></button>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
 
     <!-- Footer -->
     <footer class="text-center">
