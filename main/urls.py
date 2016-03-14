@@ -5,6 +5,7 @@ admin.autodiscover()
 
 import redesSociales.views
 import baskets.views
+import products.views
 
 # Examples:
 # url(r'^$', 'main.views.home', name='home'),
