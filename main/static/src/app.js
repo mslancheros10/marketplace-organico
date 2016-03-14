@@ -4,6 +4,7 @@
         'ngRoute',
         'mainModule',
         'basketsModule',
+        'productsModule',
     ]);
 
     marketplaceOrganico.config(['$routeProvider', function ($routeProvider) {
