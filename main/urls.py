@@ -6,6 +6,8 @@ admin.autodiscover()
 import redesSociales.views
 import baskets.views
 import products.views
+import providers.views
+
 
 # Examples:
 # url(r'^$', 'main.views.home', name='home'),
@@ -16,4 +18,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^baskets/', baskets.views.get_baskets, name='baskets'),
     url(r'^products/', products.views.get_products, name='products'),
+    url(r'^providers/', providers.views.get_providers, name='providers'),
 ]
