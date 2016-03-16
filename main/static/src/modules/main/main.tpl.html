@@ -36,7 +36,8 @@
                 <br/><br/>
             </div>
         </div>
-        <div ng-repeat="product in products | filter: search">
+        <pagination ng-model="currentPage" total-items="products.length" max-size="maxSize" boundary-links="true"/>
+        <div ng-repeat="product in filteredProducts | filter: search">
             <div class="col-md-4 col-sm-6 col-lg-4 well" style="padding: 5px;">
                 <div class="caption">
                     <h4 align="center"><strong>{{ product.name }}</strong></h4>
@@ -54,6 +55,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 
