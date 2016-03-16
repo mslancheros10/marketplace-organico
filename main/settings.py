@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'redesSociales',
     'baskets',
     'products',
+    'providers',
 )
 
 MIDDLEWARE_CLASSES = (
