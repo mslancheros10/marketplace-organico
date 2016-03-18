@@ -1,4 +1,5 @@
 from main.models import Provider
+from main.models import Farm
 from django.contrib.auth.models import User
 
 from django.utils import timezone
@@ -6,13 +7,17 @@ from django.utils import timezone
 '''
     Transform provider to json format
 '''
-def provider_to_json(provider):
+def provider_to_json(farm):
     object = {
-        'username': provider.user.username,
-        'firstName': provider.user.first_name,
-        'lastName': provider.user.last_name,
-        'email': provider.user.email,
-        'certificado': provider.certificado
+        'username': farm.provider.user.username,
+        'firstName': farm.provider.user.first_name,
+        'lastName': farm.provider.user.last_name,
+        'email': farm.provider.user.email,
+        'certificado': farm.provider.certificado,
+        'farm': farm.name,
+        'latitud': farm.latitude,
+        'longitude': farm.longitude,
+        'size': farm.size
     }
     return object
 
@@ -24,9 +29,9 @@ def provider_to_json(provider):
 '''
 def get_providers_from_model():
 
-    providers = []
+    farm = []
 
-    for p in Provider.objects.all():
-        providers.append(provider_to_json(p))
+    for p in Farm.objects.all():
+        farm.append(provider_to_json(p))
 
-    return providers
+    return farm
