@@ -9,9 +9,9 @@ import business_logic
 
 
 @csrf_exempt
-def get_baskets(request):
+def get_products(request):
     if request.method == 'GET':
-        response = business_logic.get_baskets_from_model()
+        response = business_logic.get_products_from_model()
         print response
         return JsonResponse(response,safe=False)
 

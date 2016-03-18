@@ -1,0 +1,37 @@
+<div align="center" class="container" ng-controller="basketsCtrl as ctrl" ng-init="ctrl.getBaskets()">
+    <div align="center">
+        <img align="center" id="mySpinner" src="static/src/modules/main/img/spinner.gif" ng-show="loading" />
+    </div>
+
+    <div class="col-sm-12">
+        <div ng-repeat="record in baskets">
+            <div class="col-md-4 col-sm-6 col-lg-4 well" style="padding: 5px;">
+                <div class="caption">
+
+                    <h4 align="center"><strong>{{ record.name }}</strong></h4>
+                </div>
+
+                <carousel interval="5000" no-wrap="false" style="height: 10%">
+                    <slide ng-repeat="product in record.products" active="slide.active">
+                        <img ng-src="{{ product.image_url }}" style="margin:auto; height: 300px; width: 100%" alt="{{ product.name }}">
+                        <div class="caption">
+                    <h2><strong>{{ product.quantity * product.price | currency:undefined:0}}</strong></h2>
+                    <h3>({{ product.quantity }}) {{ product.name }}</h3>
+                    <h4>
+                        <small>{{ product.unit_value }} {{ product.unit_name }} c/u</small>
+                    </h4>
+                </div>
+                    </slide>
+                </carousel>
+
+                <div align="center" class="caption">
+                    </br>
+                    <p align="center" class="text-danger"><strong> VÁLIDA HASTA: {{ record.end_date | date: 'mediumDate' }}</strong></p>
+                    <button type="button" class="btn btn-success"><h4><strong>+ AGREGAR</strong></h4></button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

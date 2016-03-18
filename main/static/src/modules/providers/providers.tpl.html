@@ -1,0 +1,62 @@
+<div align="center" class="container" ng-controller="providersCtrl as ctrl" ng-init="ctrl.getProviders()">
+    <div align="center">
+        <img align="center" id="mySpinner" src="static/src/modules/main/img/spinner.gif" ng-show="loading"/>
+    </div>
+
+    <div class="col-sm-12">
+
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="q" placeholder="Buscar proveedor" ng-model="search"/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="button"><i class="fa fa-search"> Buscar</i></button>
+                        </span>
+
+                        <h4>
+                            <small> Certificado:
+                               <input type="checkbox" name="checkCertificado" placeholder="Certificado" ng-model="search"/>
+                            </small>
+                        </h4>
+
+
+                </div>
+
+                <br/><br/>
+            </div>
+        </div>
+
+        <pagination ng-model="currentPage" total-items="providers.length" max-size="maxSize" boundary-links="true"/>
+        <div ng-repeat="providers in filteredProviders | filter: search">
+            <div class="col-md-4 col-sm-6 col-lg-4 " style="padding: 5px;">
+                <div class="caption">
+                    <h2 align="center"><strong>{{ providers.farm }} </strong></h2>
+
+                        <h4 align="center"><strong>{{ providers.firstName }} {{ providers.lastName }}</strong></h4>
+
+                        <h4 align="center">
+                            <small> {{ providers.email }}</small>
+                        </h4>
+                        <h5 align="center">
+                            <small> Latitud: {{ providers.latitud }}</small>
+                        </h5>
+                        <h5 align="center">
+                            <small> Longitud: {{ providers.latitud }}</small>
+                        </h5>
+                        <h5 align="center">
+                            <small> Tamaño: {{ providers.size }}</small>
+                        </h5>
+                        <h5 align="center">
+                            <small> Certificado:
+                                <input  type="checkbox" ng-model="providers.certificado" disabled="true">
+                            </small>
+                        </h5>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
