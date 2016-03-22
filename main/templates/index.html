@@ -75,14 +75,22 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#/products"><i class="fa fa-apple"> Productos</i></a>
-            <a class="navbar-brand" href="#/baskets"><i class="fa fa-shopping-basket"> Canastas</i></a>
+            <a class="navbar-brand">Market Place Organico</a>
+
         </div>
+
+         <div>
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="#/products"><span class="glyphicon glyphicon-apple"></span><span> Productos</span></a></li>
+                <li><a class="navbar-brand" href="#/baskets"><span class="fa fa-shopping-basket"></span> Canastas</a></li>
+            </ul>
+        </div>
+
         <div>
             <div ng-if="!message.logged">
                 <ul class="nav navbar-nav navbar-right">
-				    <li><a href="#/register"><i class="fa fa-user"> Registrarse</i></a></li>
-                    <li><a href="#/login"><i class="fa fa-sign-in"> Iniciar sesión</i></a></li>
+				    <li><a href="#/register"><span class="fa fa-user"></span> Registrarse</a></li>
+                    <li><a href="#/login"><span class="fa fa-sign-in"></span> Iniciar sesión</a></li>
                 </ul>
             </div>
         </div>
