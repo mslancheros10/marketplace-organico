@@ -18,6 +18,10 @@ def get_products(request):
         return JsonResponse(response,safe=False)
 
 
+'''
+    REST Service retrieving a product detail
+'''
+
 @csrf_exempt
 def details(request, id):
     if request.method == 'GET':

@@ -34,6 +34,10 @@ def get_products_from_model():
 
     return products
 
+'''
+    Method returning product details
+'''
+
 
 def get_product_details(id):
 
