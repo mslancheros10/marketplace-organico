@@ -72,22 +72,33 @@
 
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#/products"><i class="fa fa-apple"> Productos</i></a>
-            <a class="navbar-brand" href="#/baskets"><i class="fa fa-shopping-basket"> Canastas</i></a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Marketplace Organico</a>
         </div>
-        <div>
-            <div ng-if="!message.logged">
-                <ul class="nav navbar-nav navbar-right">
-				    <li><a href="#/register"><i class="fa fa-user"> Registrarse</i></a></li>
-                    <li><a href="#/login"><i class="fa fa-sign-in"> Iniciar sesión</i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</nav>
-<div ng-view></div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a class="navbar-brand" href="#/products"><span class="glyphicon glyphicon-apple"></span><span> Productos</span></a></li>
+            <li><a class="navbar-brand" href="#/baskets"><span class="fa fa-shopping-basket"></span> Canastas</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right"  ng-if="!message.logged">
+            <li><a href="#/register"><span class="fa fa-user"></span> Registrarse</a></li>
+            <li><a href="#/login"><span class="fa fa-sign-in"></span> Iniciar sesión</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <div ng-view></div>
+
 </body>
 </html>

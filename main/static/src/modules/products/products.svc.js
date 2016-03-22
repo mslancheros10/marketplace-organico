@@ -10,5 +10,12 @@
             });
         };
 
+        this.getDetails = function (id){
+            return $http ({
+                method: 'GET',
+                url: '/details/'+id
+            });
+        };
+
     }]);
 })(window.angular);

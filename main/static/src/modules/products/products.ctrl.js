@@ -41,5 +41,19 @@
             }, responseError);
         };
 
+        this.getDetails = function (id) {
+
+           return productsService.getDetails(id).then(function (response) {
+                $scope.details = response.data;
+            }, responseError);
+
+        };
+
+        this.initDetails = function(){
+
+            $scope.details = {};
+
+        };
+
     }]);
 })(window.angular);

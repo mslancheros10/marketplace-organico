@@ -1,6 +1,8 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
+import json
+
 import business_logic
 
 '''
@@ -16,3 +18,12 @@ def get_products(request):
         return JsonResponse(response,safe=False)
 
 
+'''
+    REST Service retrieving a product detail
+'''
+
+@csrf_exempt
+def details(request, id):
+    if request.method == 'GET':
+        response = business_logic.get_product_details(id)
+        return JsonResponse(response, safe=False)

@@ -150,11 +150,19 @@ header .intro-text .skills {
 .navbar {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+    border: solid 2px #1a242f;
+    border-radius: 50px;
+}
+
+.navbar-default a {
+    color: #0e6f5c!important;
 }
 
 .navbar a:focus {
     outline: 0;
+}
+.navbar a:hover {
+    color: #18bc9c!important;
 }
 
 .navbar .navbar-nav {
@@ -163,11 +171,6 @@ header .intro-text .skills {
 
 .navbar .navbar-nav li a:focus {
     outline: 0;
-}
-
-.navbar-default,
-.navbar-inverse {
-    border: 0;
 }
 
 section {

@@ -19,4 +19,5 @@ urlpatterns = [
     url(r'^baskets/', baskets.views.get_baskets, name='baskets'),
     url(r'^products/', products.views.get_products, name='products'),
     url(r'^providers/', providers.views.get_providers, name='providers'),
+    url(r'^details/(\d+)', products.views.details, name='details'),
 ]

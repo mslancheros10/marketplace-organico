@@ -26,7 +26,6 @@
 
     <div class="col-sm-12">
         <div class="row" style="margin-top: 10px;">
-            <div class="col-lg-6 col-lg-offset-3">
                 <div class="input-group">
                     <input type="text" class="form-control" name="q" placeholder="Buscar productos" ng-model="search"/>
                         <span class="input-group-btn">
@@ -50,13 +49,36 @@
                         </h4>
                     </div>
                     <p>
-                        <button type="button" class="btn btn-success"><strong>VER DETALLE</strong></button>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" ng-click="ctrl.getDetails( product.id )"><strong>VER DETALLE</strong></button>
                     </p>
                 </div>
             </div>
         </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="ctrl.initDetails()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{ details.name }}</h4>
+              </div>
+              <div class="modal-body">
+                  <img ng-src="{{ details.image_url }}"
+                         alt="{{ details.name }}">
+                  <div class="caption">
+                        <h2><strong>{{ details.price | currency:undefined:0}}</strong></h2>
+                        <h4>
+                            <small>{{ details.unit_value }} {{ details.unit_name }} c/u</small>
+                        </h4>
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ctrl.initDetails()">Cerrar</button>
+                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Incluir a Canasta</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
-    </div>
 </div>
 
     <!-- Footer -->
