@@ -75,27 +75,30 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
+
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Marketplace Organico</a>
-        </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a class="navbar-brand" href="#/products"><span class="glyphicon glyphicon-apple"></span><span> Productos</span></a></li>
-            <li><a class="navbar-brand" href="#/baskets"><span class="fa fa-shopping-basket"></span> Canastas</a></li>
+            <li><a class="navbar-brand" href="#/baskets"><span class="fa fa-shopping-basket"></span> <span>Canastas</span></a></li>
+            <li><a class="navbar-brand" href="#/providers"><span class="glyphicon glyphicon-grain"></span> <span>Productores</span></a></li>
           </ul>
 
-          <ul class="nav navbar-nav navbar-right"  ng-if="!message.logged">
-            <li><a href="#/register"><span class="fa fa-user"></span> Registrarse</a></li>
-            <li><a href="#/login"><span class="fa fa-sign-in"></span> Iniciar sesión</a></li>
+            <!--
+          <ul class="nav navbar-nav navbar-right"  ng-if="!message.logged" id="bs-example-navbar-collapse-1">
+            <li><a class="navbar-brand" href="#/register"><span class="glyphicon glyphicon-user"></span> <span>Registrarse</span></a></li>
+            <li><a class="navbar-brand" href="#/login"><span class="glyphicon glyphicon-log-in"></span> <span>Iniciar Sesión</span></a></li>
           </ul>
+            -->
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
+    </div>
     </nav>
 
     <div ng-view></div>
