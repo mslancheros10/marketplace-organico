@@ -32,6 +32,8 @@
                             <button class="btn btn-success" type="button"><i class="fa fa-search"> Buscar</i></button>
                         </span>
                 </div>
+                <label>Productos certíficados
+                <input type="checkbox" ng-model="certified" ng-change="ctrl.getProducts()">
                 <br/><br/>
             </div>
         </div>
@@ -93,8 +95,10 @@
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Qué pasa en Twitter</h3>
-                        <a class="twitter-timeline" href="https://twitter.com/MpOrganico"
-                            data-widget-id="708478944547311616">Tweets by @MpOrganico</a>
+                        <div id="twitter">
+                            <a class="twitter-timeline" href="https://twitter.com/MpOrganico"
+                                data-widget-id="708478944547311616">Tweets by @MpOrganico</a>
+                        </div>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Autores</h3>
@@ -124,4 +128,7 @@
 
     <!-- Twitter-->
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <script id="twitter-wjs" type="text/javascript" async defer src="//platform.twitter.com/widgets.js">
+        twttr.widgets.load()
+    </script>
 
