@@ -10,5 +10,12 @@
             });
         };
 
+        this.getCertifiedProducts = function () {
+            return $http({
+                method: 'GET',
+                url: '/certifiedProducts'
+            });
+        };
+
     }]);
 })(window.angular);

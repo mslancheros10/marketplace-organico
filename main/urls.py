@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^baskets/', baskets.views.get_baskets, name='baskets'),
     url(r'^products/', products.views.get_products, name='products'),
+    url(r'^certifiedProducts/', products.views.get_certified_products, name='certifiedProducts'),
 ]

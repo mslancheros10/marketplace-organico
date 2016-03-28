@@ -11,11 +11,21 @@
         }
 
         this.getProducts = function () {
-            return productsService.getProducts().then(function (response) {
-                $scope.loading = false;
-                console.log(response);
-                $scope.products = response.data;
-            }, responseError);
+            if(!$scope.certified){
+                return productsService.getProducts().then(function (response) {
+                    $scope.loading = false;
+                    console.log(response);
+                    $scope.products = response.data;
+                }, responseError);
+            }
+            else{
+                return productsService.getCertifiedProducts().then(function (response) {
+                    $scope.loading = false;
+                    console.log(response);
+                    $scope.products = response.data;
+                }, responseError);
+            }
+
         };
 
     }]);
