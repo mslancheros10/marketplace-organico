@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Django settings for gettingstarted project, on Heroku. Fore more info, see:
 https://github.com/heroku/heroku-django-template
@@ -14,6 +15,8 @@ import dj_database_url
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import sys
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -40,6 +43,8 @@ INSTALLED_APPS = (
     'main',
     'redesSociales',
     'baskets',
+    'products',
+    'providers',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -77,17 +82,26 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'test_database',
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ['DATABASE_NAME'],
+            'USER': os.environ['DATABASE_USER'],
+            'PASSWORD': os.environ['DATABASE_PASSWORD'],
+            'HOST': os.environ['DATABASE_HOST'],
+            'PORT': os.environ['DATABASE_PORT'],
+        }
+    }
 
-DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': os.environ['DATABASE_NAME'],
-       'USER': os.environ['DATABASE_USER'],
-       'PASSWORD': os.environ['DATABASE_PASSWORD'],
-       'HOST': os.environ['DATABASE_HOST'],
-       'PORT': os.environ['DATABASE_PORT'],
-   }
-}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
