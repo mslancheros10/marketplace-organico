@@ -14,9 +14,13 @@ import business_logic
 def get_products(request):
     if request.method == 'GET':
         response = business_logic.get_products_from_model()
-        print response
         return JsonResponse(response,safe=False)
 
+@csrf_exempt
+def get_certified_products(request):
+    if request.method == 'GET':
+        response = business_logic.get_certified_products()
+        return JsonResponse(response,safe=False)
 
 '''
     REST Service retrieving a product detail

@@ -93,11 +93,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ['DATABASE_NAME'],
-            'USER': os.environ['DATABASE_USER'],
-            'PASSWORD': os.environ['DATABASE_PASSWORD'],
-            'HOST': os.environ['DATABASE_HOST'],
-            'PORT': os.environ['DATABASE_PORT'],
+            'NAME': 'd2m72eadunn9u8',
+            'USER': 'asthdnufayyfgo',
+            'PASSWORD': 'O-WRGgmbR2GsC5gk76ZRa-FnjV',
+            'HOST': 'ec2-54-83-198-111.compute-1.amazonaws.com',
+            'PORT': '5432',
         }
     }
 

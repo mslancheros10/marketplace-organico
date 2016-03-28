@@ -29,7 +29,6 @@ def get_products_from_model():
     products = []
 
     for p in Product.objects.all():
-        print p.id
         products.append(product_to_json(p))
 
     return products
@@ -44,3 +43,12 @@ def get_product_details(id):
     product = Product.objects.get(id=id)
     product = product_to_json(product)
     return product
+
+def get_certified_products():
+    products=[]
+    temp = Product.objects.all()\
+        .only('name','price','image_url','unit_value','unit_name','farm__provider__certificado')\
+        .filter(farm__provider__certificado=True)
+    for p in temp:
+        products.append(product_to_json(p))
+    return products

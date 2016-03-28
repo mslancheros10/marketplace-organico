@@ -28,17 +28,31 @@
         }
 
         this.getProducts = function () {
-            return productsService.getProducts().then(function (response) {
-                $scope.loading = false;
-                console.log(response);
-                $scope.products = response.data;
+            if(!$scope.certified){
+                return productsService.getProducts().then(function (response) {
+                    $scope.loading = false;
+                    console.log(response);
+                    $scope.products = response.data;
 
-                var begin = (($scope.currentPage - 1) * $scope.numPerPage);
-                var end = begin + $scope.numPerPage;
+                    var begin = (($scope.currentPage - 1) * $scope.numPerPage);
+                    var end = begin + $scope.numPerPage;
 
-                $scope.filteredProducts = $scope.products.slice(begin, end);
+                    $scope.filteredProducts = $scope.products.slice(begin, end);
 
-            }, responseError);
+                    }, responseError);
+            }
+            else{
+                return productsService.getCertifiedProducts().then(function (response) {
+                    $scope.loading = false;
+                    console.log(response);
+                    $scope.products = response.data;
+                    var begin = (($scope.currentPage - 1) * $scope.numPerPage);
+                    var end = begin + $scope.numPerPage;
+
+                    $scope.filteredProducts = $scope.products.slice(begin, end);
+                }, responseError);
+            }
+
         };
 
         this.getDetails = function (id) {
