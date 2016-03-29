@@ -173,6 +173,10 @@ header .intro-text .skills {
     outline: 0;
 }
 
+.descripcion {
+    border-style: ridge;
+}
+
 section {
     padding: 100px 0;
 }
