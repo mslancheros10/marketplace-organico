@@ -1,1 +1,1 @@
-web: python manage.py collectstatic --noinput;gunicorn main.wsgi --log-file -
+web: sudo rm -r /app/main/staticfiles; gunicorn main.wsgi --log-file -
