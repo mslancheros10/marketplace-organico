@@ -14,7 +14,9 @@ def product_to_json(product):
         'price': product.price,
         'image_url': product.image_url,
         'unit_value': product.unit_value,
-        'unit_name': product.unit_name
+        'unit_name': product.unit_name,
+        'description': product.description,
+        'quantity': product.quantity
     }
     return object
 

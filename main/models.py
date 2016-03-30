@@ -20,6 +20,8 @@ class Product(models.Model):
     unit_value = models.CharField(max_length=100,blank=True)
     unit_name = models.CharField(max_length=100,blank=True)
     farm = models.ForeignKey(Farm,null=True)
+    description = models.CharField(max_length=200,blank=True)
+    quantity = models.IntegerField(blank=True,null=True)
 
 class Basket(models.Model):
     name = models.CharField(max_length=100,blank=True)

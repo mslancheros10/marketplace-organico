@@ -66,15 +66,19 @@
               <div class="modal-body">
                   <img ng-src="{{ details.image_url }}"
                          alt="{{ details.name }}">
-                  <div class="caption">
+                    <div class="caption">
                         <h2><strong>{{ details.price | currency:undefined:0}}</strong></h2>
                         <h4>
                             <small>{{ details.unit_value }} {{ details.unit_name }} c/u</small>
                         </h4>
+                        <div class="descripcion">
+                            <h5><small>{{ details.description}}</small></h5>
+                        </div>
+                        <h4>Stock: {{ details.quantity}} Unidades</strong></h4>
                     </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ctrl.initDetails()">Cerrar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ctrl.initDetails()"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
                 <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Incluir a Canasta</button>
               </div>
             </div><!-- /.modal-content -->
