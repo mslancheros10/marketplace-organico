@@ -7,6 +7,7 @@ import redesSociales.views
 import baskets.views
 import products.views
 import providers.views
+import session.views
 
 
 # Examples:
@@ -21,4 +22,5 @@ urlpatterns = [
     url(r'^certifiedProducts/', products.views.get_certified_products, name='certifiedProducts'),
     url(r'^providers/', providers.views.get_providers, name='providers'),
     url(r'^details/(\d+)', products.views.details, name='details'),
+    url(r'^login/', session.views.login_request, name='login'),
 ]
