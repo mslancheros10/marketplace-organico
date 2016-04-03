@@ -6,14 +6,14 @@
         this.isLogged = function () {
             return $http({
                 method: 'GET',
-                url: '/islogged'
+                url: '/islogged/'
             });
         };
 
         this.logOut = function () {
             return $http({
                 method: 'GET',
-                url: '/logout'
+                url: '/logout/'
             });
         };
 

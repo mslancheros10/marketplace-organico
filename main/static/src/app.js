@@ -6,6 +6,7 @@
         'basketsModule',
         'productsModule',
         'providersModule',
+        'loginModule',
     ]);
 
     marketplaceOrganico.config(['$routeProvider', function ($routeProvider) {
