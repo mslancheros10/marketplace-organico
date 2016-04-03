@@ -28,3 +28,12 @@ def is_logged_user(request):
         logged = False
     print logged
     return JsonResponse({'logged':logged})
+
+'''
+    Logout user
+'''
+
+@csrf_exempt
+def logout_user(request):
+    logout(request)
+    return JsonResponse({'logout':True})
