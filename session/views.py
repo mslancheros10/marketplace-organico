@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 import business_logic
-
+from django.contrib.auth import logout
 '''
     REST Service performing login
 '''
@@ -16,3 +16,15 @@ def login_request(request):
         return JsonResponse({'message':response})
 
 
+'''
+    Check if user is logged
+'''
+
+@csrf_exempt
+def is_logged_user(request):
+    if request.user.is_authenticated():
+        logged = True
+    else:
+        logged = False
+    print logged
+    return JsonResponse({'logged':logged})
