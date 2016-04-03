@@ -68,7 +68,9 @@
     <script src="static/src/modules/providers/providers.svc.js"></script>
     <script src="static/src/modules/providers/providers.ctrl.js"></script>
 
-
+    <script src="static/src/modules/login/login.mod.js"></script>
+    <script src="static/src/modules/login/login.svc.js"></script>
+    <script src="static/src/modules/login/login.ctrl.js"></script>
 
 </head>
 <body>
@@ -84,18 +86,18 @@
           </button>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav navbar-left">
             <li><a class="navbar-brand" href="#/products"><span class="glyphicon glyphicon-apple"></span><span> Productos</span></a></li>
             <li><a class="navbar-brand" href="#/baskets"><span class="fa fa-shopping-basket"></span> <span>Canastas</span></a></li>
             <li><a class="navbar-brand" href="#/providers"><span class="glyphicon glyphicon-grain"></span> <span>Productores</span></a></li>
           </ul>
 
-            <!--
-          <ul class="nav navbar-nav navbar-right"  ng-if="!message.logged" id="bs-example-navbar-collapse-1">
+
+          <ul class="nav navbar-nav navbar-right"  ng-if="!message.logged">
             <li><a class="navbar-brand" href="#/register"><span class="glyphicon glyphicon-user"></span> <span>Registrarse</span></a></li>
             <li><a class="navbar-brand" href="#/login"><span class="glyphicon glyphicon-log-in"></span> <span>Iniciar Sesión</span></a></li>
           </ul>
-            -->
+
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </div>
