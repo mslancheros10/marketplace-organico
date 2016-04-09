@@ -20,8 +20,10 @@ class SessionFunctionalTest(TestCase):
 
     def test_login(self):
         self.browser.get('http://localhost:8000')
-        link = self.browser.find_element_by_id('id_login')
-        link.click()
+        login_option = self.browser.find_element_by_id('id_login')
+        login_option.click()
+
+        self.browser.implicitly_wait(5)
 
         name = self.browser.find_element_by_id('username')
         name.send_keys('admin')
@@ -29,7 +31,16 @@ class SessionFunctionalTest(TestCase):
         last_name = self.browser.find_element_by_id('password')
         last_name.send_keys('administrador')
 
-        self.browser.implicitly_wait(5)
+        login_button = self.browser.find_element_by_id('id_button_login')
+        login_button.click()
 
-        self.assertIsNotNone(self.browser.find_element_by_link_text('admin'))
+        self.browser.implicitly_wait(8)
+
+        logout_option = self.browser.find_element_by_id('id_option_logout')
+
+        self.assertIsNotNone(logout_option)
+
+        logout_option.click()
+
+        self.browser.implicitly_wait(8)
 
