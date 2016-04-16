@@ -27,6 +27,11 @@
                 controller: 'providersCtrl',
                 controllerAs: 'ctrl'
             })
+            .when('/home', {
+                templateUrl: 'static/src/modules/home/home.html',
+                controller: '',
+                controllerAs: ''
+            })
             .otherwise('/main');
 
     }]);
