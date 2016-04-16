@@ -1,8 +1,10 @@
+import unittest
 from unittest import TestCase
 
 # Create your tests here.
 from selenium import webdriver
 
+@unittest.skip("skip the test")
 class SessionFunctionalTest(TestCase):
 
     def setUp(self):

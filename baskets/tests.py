@@ -5,8 +5,8 @@ from main.models import Basket, Product, ShoppingItem
 import business_logic
 
 # Create your tests here.
-END_DATE = '2016-03-30T15:19:21+00:00'
-START_DATE = '2016-03-01T15:19:21+00:00'
+END_DATE = '2017-03-30T15:19:21+00:00'
+START_DATE = '2015-03-01T15:19:21+00:00'
 PAPAYA = 'Papaya'
 CANASTA_DE_TEST = 'Canasta de Test'
 
