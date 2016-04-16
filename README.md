@@ -1,4 +1,7 @@
-Market Place Orgánico
+
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/e79dee2b95844717977bdc0fa2622ff4)](https://www.codacy.com/app/alejoperezgarcia/marketplace-organico)
+
+##Market Place Orgánico
 
 - Integrantes
   - Catherine Velandia
