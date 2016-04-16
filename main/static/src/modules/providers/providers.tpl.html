@@ -1,3 +1,19 @@
+<!-- Header -->
+    <header style="font-size:8px height:300px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="intro-text">
+                        <span class="name">MarketPlace Orgánico</span>
+                        <hr class="star-light">
+                        <span class="skills">Tu lugar favorito</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
 <div align="center" class="container" ng-controller="providersCtrl as ctrl" ng-init="ctrl.getProviders()">
     <div align="center">
         <img align="center" id="mySpinner" src="static/src/modules/main/img/spinner.gif" ng-show="loading"/>
@@ -12,15 +28,11 @@
                         <span class="input-group-btn">
                             <button class="btn btn-success" type="button"><i class="fa fa-search"> Buscar</i></button>
                         </span>
-
-                        <h4>
-                            <small> Certificado:
-                               <input type="checkbox" name="checkCertificado" placeholder="Certificado" ng-model="search"/>
-                            </small>
-                        </h4>
-
-
                 </div>
+
+                <label>Productores certíficados
+                <input type="checkbox" ng-model="certified" ng-change="ctrl.getProviders()">
+                <br/><br/>
 
                 <br/><br/>
             </div>
@@ -30,9 +42,9 @@
         <div ng-repeat="providers in filteredProviders | filter: search">
             <div class="col-md-4 col-sm-6 col-lg-4 well" style="padding: 5px;">
                 <div class="caption">
-                    <h2 align="center"><strong>{{ providers.farm }} </strong></h2>
+                    <h3 align="center"><strong>{{ providers.farm }} </strong></h3>
 
-                    <img style="margin:auto; height: 300px; width: 100%" src="https://maps.googleapis.com/maps/api/staticmap?center={{ providers.latitud }},{{ providers.longitude }}&zoom=13&size=300x300&maptype=roadmap&markers=color:red%7Clabel:C%7C{{ providers.latitud }},{{ providers.longitude }}&key=AIzaSyCL1qoAd2fWDwWM8y-SyngJ42ywrReHAEM">
+                        <img onmousemove="" style="margin:auto; height: 180px; width: 80%" src="https://maps.googleapis.com/maps/api/staticmap?center={{ providers.latitud }},{{ providers.longitude }}&zoom=13&size=300x300&maptype=roadmap&markers=color:red%7Clabel:C%7C{{ providers.latitud }},{{ providers.longitude }}&key=AIzaSyCL1qoAd2fWDwWM8y-SyngJ42ywrReHAEM">
 
                         <h5 align="center"><strong> Productor: {{ providers.username }} </strong></h5>
 
@@ -47,9 +59,6 @@
                                 <input  type="checkbox" ng-model="providers.certificado" disabled="true">
                             </small>
                         </h5>
-
-
-
                 </div>
             </div>
         </div>

@@ -51,6 +51,7 @@
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
           type="text/css">
 
+    <link href="static/src/modules/main/css/marketplace.css" rel="stylesheet" type="text/css">
 
     <!-- Angular JS files -->
     <script src="static/src/app.js"></script>
@@ -78,7 +79,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default" ng-controller="mainCtrl as ctrl" ng-init="ctrl.isLogged()">
+<nav ng-controller="mainCtrl as ctrl" ng-init="ctrl.isLogged()">
     <div class="container-fluid">
         <div class="navbar-header">
 
@@ -90,15 +91,18 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-left">
-                    <li><a class="navbar-brand" href="#/products"><span class="glyphicon glyphicon-apple"></span><span> Productos</span></a>
-                    </li>
-                    <li><a class="navbar-brand" href="#/baskets"><span class="fa fa-shopping-basket"></span> <span>Canastas</span></a>
-                    </li>
-                    <li><a class="navbar-brand" href="#/providers"><span class="glyphicon glyphicon-grain"></span>
-                        <span>Productores</span></a></li>
-                </ul>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="width: 300%">
+                <div id="idMenuPrincipal" style="float:left; width: 70%;">
+                    <ul class="nav navbar-nav navbar-left" >
+                        <li><a class="navbar-brand" href="#/home"><span class="fa fa-home"></span> <span>Home</span></a></li>
+                        <li><a class="navbar-brand" href="#/products"><span class="glyphicon glyphicon-apple"></span><span> Productos</span></a>
+                        </li>
+                        <li><a class="navbar-brand" href="#/baskets"><span class="fa fa-shopping-basket"></span> <span>Canastas</span></a>
+                        </li>
+                        <li><a class="navbar-brand" href="#/providers"><span class="glyphicon glyphicon-grain"></span>
+                            <span>Productores</span></a></li>
+                    </ul>
+                </div>
 
                 <div ng-if="message.logged">
                     <ul class="nav navbar-nav navbar-left" ng-if="message.logged">
@@ -109,7 +113,7 @@
                     </ul>
                 </div>
 
-                <div ng-if="!message.logged">
+                <div ng-if="!message.logged"  id="idMenuLogin" style="float:left; width: 30%;">
                     <ul class="nav navbar-nav navbar-left" ng-if="!message.logged">
                         <!--
                         <li><a class="navbar-brand" href="#/main"><span class="glyphicon glyphicon-user"></span> <span>Registrarse</span></a>
@@ -120,6 +124,7 @@
                     </ul>
                 </div>
             </div><!-- /.navbar-collapse -->
+
         </div><!-- /.container-fluid -->
     </div>
 </nav>
