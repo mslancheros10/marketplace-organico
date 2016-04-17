@@ -31,8 +31,9 @@ def shoppingItems_to_json(shoppingItem):
     object = {
         'quantity':shoppingItem.quantity,
         'state': shoppingItem.state,
-        'baskets': Bask.get_basket_products(shoppingItem.basket),
-        'products': get_shoppingItem_products(shoppingItem.product)
+        'baskets': get_shoppingItem_baskets(shoppingItem.basket),
+        'products': get_shoppingItem_products(shoppingItem.product),
+        'price': Bask.get_basket_price(shoppingItem.basket)
     }
 
     return object
@@ -42,6 +43,15 @@ def get_shoppingItem_products(product):
     try:
         products.append(Prod.product_to_json(product))
     except:
-        print 'Error..'
+        print 'Error consultando producto.'
 
     return products
+
+def get_shoppingItem_baskets(basket):
+    baskets = []
+    try:
+        baskets.append(Bask.basket_to_json(basket))
+    except:
+        print 'Error consultando canasta'
+
+    return baskets

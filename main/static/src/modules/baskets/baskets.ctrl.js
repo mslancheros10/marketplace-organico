@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module('basketsModule');
 
-    mod.controller('basketsCtrl', ['$scope', 'basketsService', function ($scope, basketsService) {
+    mod.controller('basketsCtrl', ['$scope','$filter', 'basketsService', function ($scope,$filter, basketsService) {
 
         $scope.loading = true;
 
