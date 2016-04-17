@@ -15,7 +15,7 @@ class BasketsCase(TestCase):
     def setUp(self):
         product = Product.objects.create(name=PAPAYA, price=3000)
         basket = Basket.objects.create(name=CANASTA_DE_TEST, start_date=START_DATE, end_date=END_DATE)
-        ShoppingItem.objects.create(quantity=2,product=product,basket=basket)
+        ShoppingItem.objects.create(quantity=2,product=product,basket=basket,state='promocion')
 
     def test_get_baskets(self):
         baskets = business_logic.get_baskets_from_model()
