@@ -44,6 +44,7 @@
 
     <!-- Custom CSS -->
     <link href="static/src/modules/main/css/freelancer.2.css" rel="stylesheet">
+    <link href="static/src/modules/shoppingItems/css/shoppingItems.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="static/src/modules/main/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -76,6 +77,10 @@
     <script src="static/src/modules/login/login.mod.js"></script>
     <script src="static/src/modules/login/login.svc.js"></script>
     <script src="static/src/modules/login/login.ctrl.js"></script>
+
+    <script src="static/src/modules/shoppingItems/shoppingItems.mod.js"></script>
+    <script src="static/src/modules/shoppingItems/shoppingItems.svc.js"></script>
+    <script src="static/src/modules/shoppingItems/shoppingItems.ctrl.js"></script>
 
 </head>
 <body>
@@ -110,6 +115,9 @@
                             <span>{{ user.username }}</span></a></li>
                         <li><a id="id_option_logout" ng-click="ctrl.logOut()" class="navbar-brand" href="#/main"><span class="glyphicon glyphicon-log-in"></span>
                             <span>Cerrar Sesión</span></a></li>
+
+                    <li><a id="id_carrito" class="navbar-brand" href="#/main" data-toggle="modal" data-target="#shoppingItemsModal"><span
+                                class="fa fa-shopping-cart"></span> <span>Ver Carrito</span></a></li>
                     </ul>
                 </div>
 
@@ -121,6 +129,9 @@
                         -->
                         <li><a id="id_login" class="navbar-brand" href="#/main" data-toggle="modal" data-target="#loginModal"><span
                                 class="glyphicon glyphicon-log-in"></span> <span>Iniciar Sesión</span></a></li>
+
+                        <li><a id="id_carrito" class="navbar-brand" href="#/main" data-toggle="modal" data-target="#shoppingItemsModal"><span
+                                class="fa fa-shopping-cart"></span> <span>Ver Carrito</span></a></li>
                     </ul>
                 </div>
             </div><!-- /.navbar-collapse -->
@@ -168,6 +179,7 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
 
 <div ng-view></div>
 

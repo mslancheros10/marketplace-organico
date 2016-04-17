@@ -7,6 +7,7 @@
         'productsModule',
         'providersModule',
         'loginModule',
+        'shoppingItemsModule',
     ]);
 
     marketplaceOrganico.config(['$routeProvider', function ($routeProvider) {
@@ -31,8 +32,12 @@
                 templateUrl: 'static/src/modules/home/home.html',
                 controller: '',
                 controllerAs: ''
+            })        
+            .when('/shoppingItems', {
+                templateUrl: 'static/src/modules/shoppingItems/shoppingItems.tpl.html',
+                controller: 'shoppingItemsCtrl',
+                controllerAs: 'ctrl'
             })
             .otherwise('/main');
-
     }]);
 })(window.angular);
