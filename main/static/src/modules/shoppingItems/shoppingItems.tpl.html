@@ -22,21 +22,22 @@
                     <i class="fa fa-times"></i>
                 </div>
             </div>
-            <div class="cart-item-div ng-scope" ng-repeat="product in record.baskets ">
-                <div class="qty cart-item-cell">{{ record.quantity }} - Cansta</div>
+            <div class="cart-item-div ng-scope" ng-repeat="basket in record.baskets ">
+                <div class="qty cart-item-cell">{{ record.quantity }}</div>
                 <div class="image cart-item-cell">
-                   <img ng-src="{{ product.image_url }}" style="margin:auto; height: 300px; width: 100%" alt="{{ product.name }}">
+                    <img ng-src="http://www.frutasluisi.eu/wp-content/uploads/2014/04/05-frutas-luisi.jpg" style="margin:auto; height: 300px; width: 100%" alt="{{ basket.name }}">
+
                 </div>
                 <div class="name cart-item-cell">
-                    <div>{{ product.name }}</div>
-                    <small>{{ product.unit_value }} {{ product.unit_name }}</small>
+                    <div>{{ basket.name }}</div>
                 </div>
                 <div class="price cart-item-cell">
-                    <label>{{ record.quantity * product.price | currency:undefined:0}} </label>
+                    <label>{{ record.quantity * record.price | currency:undefined:0 }}</label>
                 </div>
                 <div class="remove-cart cart-item-cell">
                     <i class="fa fa-times"></i>
                 </div>
+
             </div>
         </div>
     </div>
