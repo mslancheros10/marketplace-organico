@@ -109,7 +109,7 @@
                     </ul>
                 </div>
 
-                <div ng-if="message.logged">
+                <div ng-if="message.logged" style="float:left; width: 30%;">
                     <ul class="nav navbar-nav navbar-left" ng-if="message.logged">
                         <li><a class="navbar-brand" href="#/main"><span class="glyphicon glyphicon-user"></span>
                             <span>{{ user.username }}</span></a></li>
@@ -129,9 +129,6 @@
                         -->
                         <li><a id="id_login" class="navbar-brand" href="#/main" data-toggle="modal" data-target="#loginModal"><span
                                 class="glyphicon glyphicon-log-in"></span> <span>Iniciar Sesión</span></a></li>
-
-                        <li><a id="id_carrito" class="navbar-brand" href="#/main" data-toggle="modal" data-target="#shoppingItemsModal"><span
-                                class="fa fa-shopping-cart"></span> <span>Ver Carrito</span></a></li>
                     </ul>
                 </div>
             </div><!-- /.navbar-collapse -->
