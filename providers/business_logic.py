@@ -28,10 +28,18 @@ def provider_to_json(farm):
     Method returning all providers
 '''
 def get_providers_from_model():
-
     farm = []
-
     for p in Farm.objects.all():
         farm.append(provider_to_json(p))
 
+    return farm
+
+
+def get_providers_certified():
+    farm=[]
+    temp = Farm.objects.all()\
+        .only('name','latitude','longitude','size','provider__certificado')\
+        .filter(provider__certificado=True)
+    for p in temp:
+        farm.append(provider_to_json(p))
     return farm
