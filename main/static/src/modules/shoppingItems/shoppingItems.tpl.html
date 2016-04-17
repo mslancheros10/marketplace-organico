@@ -1,12 +1,13 @@
-<div align="center" class="container" ng-controller="shoppingItemsCtrl as ctrl" ng-init="ctrl.gethSoppingItems()">
-    <div align="center">
+<div align="center" class="container" ng-controller="shoppingItemsCtrl as ctrl" ng-init="ctrl.getShoppingItems()">
+    <div align="center"> carcandos---
         <img align="center" id="mySpinner" src="static/src/modules/main/img/spinner.gif" ng-show="loading" />
     </div>
+
     <div id="cart-sidebar" class="cart-sidebar">
     <div  class="cart-wrapper col-sm-12">
         <div class="cart-items" ng-repeat="record in shoppingItems">
             <div class="cart-item-div ng-scope" ng-repeat="product in record.products ">
-                <div class="qty cart-item-cell">{{ product.quantity }}</div>
+                <div class="qty cart-item-cell">{{ record.quantity }}</div>
                 <div class="image cart-item-cell">
                    <img ng-src="{{ product.image_url }}" style="margin:auto; height: 300px; width: 100%" alt="{{ product.name }}">
                 </div>
@@ -15,7 +16,23 @@
                     <small>{{ product.unit_value }} {{ product.unit_name }}</small>
                 </div>
                 <div class="price cart-item-cell">
-                    <label>$ {{ product.quantity * product.price | currency:undefined:0}} </label>
+                    <label>{{ record.quantity * product.price | currency:undefined:0}} </label>
+                </div>
+                <div class="remove-cart cart-item-cell">
+                    <i class="fa fa-times"></i>
+                </div>
+            </div>
+            <div class="cart-item-div ng-scope" ng-repeat="product in record.baskets ">
+                <div class="qty cart-item-cell">{{ record.quantity }} - Cansta</div>
+                <div class="image cart-item-cell">
+                   <img ng-src="{{ product.image_url }}" style="margin:auto; height: 300px; width: 100%" alt="{{ product.name }}">
+                </div>
+                <div class="name cart-item-cell">
+                    <div>{{ product.name }}</div>
+                    <small>{{ product.unit_value }} {{ product.unit_name }}</small>
+                </div>
+                <div class="price cart-item-cell">
+                    <label>{{ record.quantity * product.price | currency:undefined:0}} </label>
                 </div>
                 <div class="remove-cart cart-item-cell">
                     <i class="fa fa-times"></i>
@@ -25,4 +42,5 @@
     </div>
     <div class="cart-options"></div>
     </div>
+
 </div>

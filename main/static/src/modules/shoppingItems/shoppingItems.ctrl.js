@@ -13,8 +13,8 @@
         this.getShoppingItems = function () {
             return shoppingItemsService.svcGetShoppingItems().then(function (response) {
                 $scope.loading = false;
-                console.log(response);
                 $scope.shoppingItems = response.data;
+                console.log('Respuesta de la vista: '+response);
             }, responseError);
         };
 

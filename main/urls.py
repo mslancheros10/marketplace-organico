@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^baskets/', baskets.views.get_baskets, name='baskets'),
     url(r'^products/', products.views.get_products, name='products'),
     url(r'^addProduct/(\d+)/(.+)', shoppingItems.views.addProduct, name='addProduct'),
+    url(r'^shoppingItems', shoppingItems.views.get_shoppinItems, name='shoppingItems'),
     url(r'^certifiedProducts/', products.views.get_certified_products, name='certifiedProducts'),
     url(r'^providers/', providers.views.get_providers, name='providers'),
     url(r'^details/(\d+)', products.views.details, name='details'),

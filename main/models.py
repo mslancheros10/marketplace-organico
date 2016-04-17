@@ -30,7 +30,7 @@ class Basket(models.Model):
 
 class ShoppingItem(models.Model):
     quantity = models.IntegerField(blank=True)
-    product = models.ForeignKey(Product,null=True)
+    product = models.ForeignKey(Product,null=True, blank=True)
     basket = models.ForeignKey(Basket,null=True, blank=True)
     user = models.ForeignKey(User, null=True, blank=True)
     state = models.CharField(max_length=10, blank=True)

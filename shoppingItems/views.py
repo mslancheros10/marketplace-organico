@@ -82,3 +82,22 @@ def addProduct(request, id, tipo):
         '''
 
         return JsonResponse(response, safe=False)
+
+'''
+    REST Service retrieving current shoppinItems
+'''
+@csrf_exempt
+def get_shoppinItems(request):
+    if request.method == 'GET':
+        if request.user.is_authenticated():
+            idUser = request.user.id
+        else:
+            idUser = -1
+
+        response = business_logic.get_shoppinItems_from_model(idUser)
+
+        '''
+        response = 'Entro----'
+        '''
+        print response
+        return JsonResponse(response,safe=False)
