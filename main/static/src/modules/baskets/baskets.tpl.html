@@ -1,10 +1,39 @@
+<!-- Header -->
+    <header style="font-size:8px height:300px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="intro-text">
+                        <span class="name">MarketPlace Orgánico</span>
+                        <hr class="star-light">
+                        <span class="skills">Tu lugar favorito</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
 <div align="center" class="container" ng-controller="basketsCtrl as ctrl" ng-init="ctrl.getBaskets()">
     <div align="center">
         <img align="center" id="mySpinner" src="static/src/modules/main/img/spinner.gif" ng-show="loading" />
     </div>
 
+
+    <div class="row" style="margin-top: 10px;">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="q" placeholder="Buscar canastas" ng-model="search"/>
+                        <span  class="input-group-btn">
+                            <button class="btn btn-success" type="button"><i class="fa fa-search"> Buscar</i></button>
+                        </span>
+                </div>
+            </div>
+        </div>
+
+    <pagination ng-model="currentPage" total-items="baskets.length" max-size="maxSize" boundary-links="true"/>
     <div class="col-sm-12">
-        <div ng-repeat="record in baskets">
+        <div ng-repeat="record in filteredBaskets | filter: search">
             <div class="col-md-4 col-sm-6 col-lg-4 well" style="padding: 5px;">
                 <div class="caption">
 

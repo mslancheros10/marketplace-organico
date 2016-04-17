@@ -5,6 +5,23 @@
 
         $scope.loading = true;
 
+        $scope.filteredBaskets = [];
+        $scope.currentPage = 1;
+        $scope.numPerPage = 6;
+        $scope.maxSize = 10;
+
+        $scope.$watch('search', function(val) {
+            $scope.filteredBaskets = $scope.baskets
+            $filter('filter')($scope.filteredBaskets, val);
+        });
+
+        $scope.$watch('currentPage + numPerPage', function() {
+            var begin = (($scope.currentPage - 1) * $scope.numPerPage);
+            var end = begin + $scope.numPerPage;
+
+            $scope.filteredBaskets = $scope.baskets.slice(begin, end);
+        });
+
         function responseError(response) {
             console.log(response);
             $scope.loading = false;
@@ -15,6 +32,10 @@
                 $scope.loading = false;
                 console.log(response);
                 $scope.baskets = response.data;
+                    var begin = (($scope.currentPage - 1) * $scope.numPerPage);
+                    var end = begin + $scope.numPerPage;
+
+                    $scope.filteredBaskets = $scope.baskets.slice(begin, end);
             }, responseError);
         };
 
