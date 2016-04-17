@@ -27,7 +27,7 @@ def shopping_item_to_json(shopping_item):
 def get_basket_products(basket):
     products = []
 
-    for p in ShoppingItem.objects.filter(basket=basket):
+    for p in ShoppingItem.objects.filter(basket=basket, state='promocion'):
         products.append(shopping_item_to_json(p))
 
     return products

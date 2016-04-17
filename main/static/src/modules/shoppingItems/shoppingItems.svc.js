@@ -9,10 +9,10 @@
                 url: '/shoppingItems'
             });
         };
-        this.svcAddProduct = function (id){
+        this.svcAddProduct = function (id, tipo){
             return $http ({
                 method: 'GET',
-                url: '/addProduct/'+id
+                url: '/addProduct/'+id+'/'+tipo
             });
         };
 

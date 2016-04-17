@@ -17,19 +17,18 @@
                 $scope.shoppingItems = response.data;
             }, responseError);
         };
-        
-        this.addProduct = function (id) {
-            
-           return shoppingItemsService.svcAddProduct(id).then(function (response) {
-                    console.log('El producto: '+id + '- response: '+ response.data);
-                    alert('Producto agregado.');
+
+        this.addProduct = function (id, tipo) {
+
+           return shoppingItemsService.svcAddProduct(id,tipo).then(function (response) {
+                    console.log('Info Angular - Parametros enviados: idProducto: '+id +', tipo: '+tipo+ ', respuesta de la vista: '+ response.data);
                     window.location.assign('#/main');
                     window.location.reload(true);
                 }, responseError);
 
         };
-        
-        
+
+
 
     }]);
 })(window.angular);
