@@ -43,7 +43,7 @@ def get_shoppingItem_products(product):
     try:
         products.append(Prod.product_to_json(product))
     except:
-        print 'Error consultando producto.'
+        print 'No hay productos asociados..'
 
     return products
 
@@ -52,6 +52,6 @@ def get_shoppingItem_baskets(basket):
     try:
         baskets.append(Bask.basket_to_json(basket))
     except:
-        print 'Error consultando canasta'
+        print 'No hay canastas asociadas..'
 
     return baskets
