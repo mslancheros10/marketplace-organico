@@ -48,5 +48,9 @@ class ShoppingItem(models.Model):
         ordering = ('id',)
 
 
+class Payment(models.Model):
+    price = models.DecimalField(decimal_places=2,max_digits=10)
+    date = models.DateTimeField(blank=True)
+    user = models.ForeignKey(User, null=True, blank=True)
 
 

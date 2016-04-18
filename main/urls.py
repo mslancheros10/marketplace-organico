@@ -10,6 +10,7 @@ import providers.views
 import session.views
 import home.views
 import shoppingItems.views
+import payment.views
 
 
 
@@ -32,5 +33,6 @@ urlpatterns = [
     url(r'^islogged/', session.views.is_logged_user, name='isLoggedUser'),
     url(r'^logout/', session.views.logout_user, name='logout'),
     url(r'^certifiedProviders/', providers.views.get_providers_certified, name='certifiedProviders'),
+    url(r'^payment', payment.views.pay_cart, name='payCart'),
     url(r'^home', home.views.home, name='home'),
 ]
