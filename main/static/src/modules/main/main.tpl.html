@@ -60,7 +60,7 @@
                                     <label>{{ record.quantity * product.price | currency:undefined:0}} </label>
                                 </div>
                                 <div class="remove-cart cart-item-cell">
-                                    <i class="fa fa-times"></i>
+                                    <a ng-click="ctrl.deleteProduct(record.id)"><i class="fa fa-times"></i></a>
                                 </div>
                             </div>
                             <div class="cart-item-div ng-scope" ng-repeat="basket in record.baskets ">
@@ -77,7 +77,7 @@
                                     <label>{{ record.quantity * record.price | currency:undefined:0 }}</label>
                                 </div>
                                 <div class="remove-cart cart-item-cell">
-                                    <i class="fa fa-times"></i>
+                                    <a ng-click="ctrl.deleteProduct(record.id)"><i class="fa fa-times"></i></a>
                                 </div>
 
                             </div>
@@ -87,7 +87,8 @@
                   </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>Pagar</button>
+                  <div id="msgAutenticacion" style="color: red;"></div>
+                  <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>Pagar</button>
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->

@@ -36,6 +36,23 @@
 
         };
 
+        this.deleteProduct = function (id) {
+
+            if(confirm('Seguro que desea eliminar este producto?') == true)
+            {
+                return shoppingItemsService.svcDeleteProduct(id).then(function (response) {
+                    if (response.data == 'no autenticado') {
+                        $('#msgAutenticacion').html('Para eliminar este producto debe estar autenticado.');
+                    }
+                    console.log('Info Angular - Parametros enviados: idShoppinItem: ' + id + ', respuesta de la vista: ' + response.data);
+                    window.location.assign('#/main');
+                    window.location.reload(true);
+
+                }, responseError);
+            }
+
+        };
+
 
 
     }]);

@@ -1,5 +1,5 @@
 <div align="center" class="container" ng-controller="shoppingItemsCtrl as ctrl" ng-init="ctrl.getShoppingItems()">
-    <div align="center"> carcandos---
+    <div align="center">
         <img align="center" id="mySpinner" src="static/src/modules/main/img/spinner.gif" ng-show="loading" />
     </div>
 
@@ -19,7 +19,7 @@
                     <label>{{ record.quantity * product.price | currency:undefined:0}} </label>
                 </div>
                 <div class="remove-cart cart-item-cell">
-                    <i class="fa fa-times"></i>
+                    <a ng-click="ctrl.deleteProduct(record.id)"><i class="fa fa-times"></i></a>
                 </div>
             </div>
             <div class="cart-item-div ng-scope" ng-repeat="basket in record.baskets ">
@@ -35,7 +35,7 @@
                     <label>{{ record.quantity * record.price | currency:undefined:0 }}</label>
                 </div>
                 <div class="remove-cart cart-item-cell">
-                    <i class="fa fa-times"></i>
+                    <a ng-click="ctrl.deleteProduct(record.id)"><i class="fa fa-times"></i></a>
                 </div>
 
             </div>
