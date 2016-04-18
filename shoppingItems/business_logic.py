@@ -11,7 +11,7 @@ import json
     Method returning all shoppingItems
 '''
 
-def get_shoppinItems_from_model(idUser):
+def get_shoppingItems_from_model(idUser):
 
     shoppingItems = []
 
@@ -29,6 +29,7 @@ def get_shoppinItems_from_model(idUser):
 def shoppingItems_to_json(shoppingItem):
 
     object = {
+        'id':shoppingItem.id,
         'quantity':shoppingItem.quantity,
         'state': shoppingItem.state,
         'baskets': get_shoppingItem_baskets(shoppingItem.basket),

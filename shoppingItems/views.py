@@ -89,13 +89,44 @@ def addProduct(request, id, tipo):
     REST Service retrieving current shoppinItems
 '''
 @csrf_exempt
-def get_shoppinItems(request):
+def get_shoppingItems(request):
     if request.method == 'GET':
         if request.user.is_authenticated():
             idUser = request.user.id
+            response = business_logic.get_shoppingItems_from_model(idUser)
         else:
-            idUser = -1
-
-        response = business_logic.get_shoppinItems_from_model(idUser)
+            response = 'no autenticado'
 
         return JsonResponse(response,safe=False)
+
+'''
+    Delete product of ShooppingItems
+'''
+@csrf_exempt
+def deleteProduct(request, id):
+    if request.method == 'GET':
+        response = ''
+        respuesta = ''
+        existItem = True
+
+
+        if request.user.is_authenticated():
+            idUser = request.user.id
+
+            try:
+                shopItem = ShoppingItem.objects.get(id=id, state='activo', user=idUser)
+            except ObjectDoesNotExist:
+                existItem = False
+
+            if existItem:
+                shopItem.delete()
+                respuesta = 'Se elimina el shoppItem: ' + str(id)
+            else:
+                respuesta = 'El shoppItem no existe.'
+
+            response = respuesta
+        else:
+             response = 'no autenticado'
+
+        return JsonResponse(response,safe=False)
+

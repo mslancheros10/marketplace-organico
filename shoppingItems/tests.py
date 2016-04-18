@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AnonymousUser, User
 from django.test import TestCase, RequestFactory
 from main.models import Basket, Product, ShoppingItem
-from shoppingItems.views import addProduct
+from shoppingItems.views import addProduct, deleteProduct
 
 # Create your tests here.
 
@@ -21,7 +21,6 @@ class ShoppingItemsCase(TestCase):
         self.shoppingItem = ShoppingItem.objects.create(quantity=2, user=self.user, product=product, state='activo')
         self.shoppingItem2 = ShoppingItem.objects.create(quantity=1, user=self.user, basket=basket, state='activo')
 
-
     def test_add_product(self):
         # Create an instance of a GET request.
         request = self.factory.get('/customer/details')
@@ -29,6 +28,7 @@ class ShoppingItemsCase(TestCase):
         # Recall that middleware are not supported. You can simulate a
         # logged-in user by setting request.user manually.
         request.user = self.user
+        request.method = 'GET'
 
         # Test my_view() as if it were deployed at /customer/details
         response = addProduct(request, self.shoppingItem.product.id, 'product')
@@ -36,6 +36,7 @@ class ShoppingItemsCase(TestCase):
         #response.status_code = 300
 
         self.assertEqual(response.status_code, 200, 'El metodo addProduct de shoppingItem respondio un status_code diferente a 200')
+
         self.assertIsNotNone(self.shoppingItem.product)
 
         first_product = self.shoppingItem.product
@@ -55,6 +56,23 @@ class ShoppingItemsCase(TestCase):
         self.assertEqual(first_shoppItem.quantity, 2, 'La cantidad asociada al shoppItem esta mal')
         self.assertEqual(first_shoppItem.user.username, USERNAME_TEST, 'El username del usuario asociado al shoppItem esta mal')
         self.assertEqual(first_shoppItem.state, 'activo', 'El estado asociado al shoppItem esta mal')
+
+    def test_delete_product(self):
+        # Create an instance of a GET request.
+        request = self.factory.get('/customer/details')
+
+        # Recall that middleware are not supported. You can simulate a
+        # logged-in user by setting request.user manually.
+        request.user = self.user
+        request.method = 'GET'
+
+        # Test my_view() as if it were deployed at /customer/details
+        response = deleteProduct(request, self.shoppingItem.id)
+        print 'Se elimino el shoppItem: '+str(self.shoppingItem.id)
+
+        #response.status_code = 300
+
+        self.assertEqual(response.status_code, 200, 'El metodo deleteProduct de shoppingItem respondio un status_code diferente a 200')
 
 
 
