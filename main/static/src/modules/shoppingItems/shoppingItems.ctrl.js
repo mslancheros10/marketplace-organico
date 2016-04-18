@@ -27,7 +27,6 @@
                             $('#msgAutenticacion').html('Para agregar este producto debe estar autenticado.');
                         }
                     }else{
-                        alert('entrar');
                         window.location.assign('#/main');
                         window.location.reload(true);
                     }
