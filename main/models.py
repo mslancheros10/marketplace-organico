@@ -40,7 +40,7 @@ class ShoppingItem(models.Model):
     create_date = models.DateTimeField(null=True,blank=True, default=timezone.now)
 
     def __str__(self):
-        return 'El producto %s canasta %s usuario %s' % (self.product.name, self.basket.name, self.user.username)
+        return 'El shoppItem se creo de manera correcta.'
 
     class Meta:
         verbose_name = 'ShoppingItem'
