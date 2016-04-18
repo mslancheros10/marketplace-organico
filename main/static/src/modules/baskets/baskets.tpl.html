@@ -1,3 +1,19 @@
+<!-- Modals -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="msgModal">
+        <div class="container">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="id_button_close" type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Advertencia</h4>
+                    </div>
+                    <div class="modal-body">Para agregar este producto debe estar autenticado.</div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
 <!-- Header -->
     <header style="font-size:8px height:300px">
         <div class="container">
@@ -63,4 +79,5 @@
             </div>
         </div>
     </div>
+    <a id="mostrarModal" class="navbar-brand" href="#/baskets" data-toggle="modal" data-target="#msgModal"></a>
 </div>

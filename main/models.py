@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 # Create your models here.
+
 
 class Provider(models.Model):
     user = models.OneToOneField(User,null=True)
@@ -34,6 +36,8 @@ class ShoppingItem(models.Model):
     basket = models.ForeignKey(Basket,null=True, blank=True)
     user = models.ForeignKey(User, null=True, blank=True)
     state = models.CharField(max_length=10, blank=True)
+    session = models.CharField(max_length=50, null=True, blank=True)
+    create_date = models.DateTimeField(null=True,blank=True, default=timezone.now)
 
 
 
