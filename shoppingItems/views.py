@@ -75,7 +75,7 @@ def addProduct(request, id, tipo):
                 shopItem.save()
                 respuesta = 'se crea el nuevo item en shoppingItems'
 
-            response = 'El producto ('+ idProducto +') de tipo ('+ tipoProducto +') fur agregado y relacionado al usuario ('+str(idUser) + ') Total de productos antes del proceso (' +str(total) + ') - Resultado final: '+ respuesta
+            response = 'El producto ('+ str(idProducto) +') de tipo ('+ tipoProducto +') fur agregado y relacionado al usuario ('+str(idUser) + ') Total de productos antes del proceso (' +str(total) + ') - Resultado final: '+ respuesta
         else:
             response = 'no autenticado'
 
