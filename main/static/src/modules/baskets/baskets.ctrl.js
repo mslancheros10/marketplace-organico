@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module('basketsModule');
 
-    mod.controller('basketsCtrl', ['$scope','$filter', 'basketsService', function ($scope,$filter, basketsService) {
+    mod.controller('basketsCtrl', ['$scope','$filter', 'basketsService','$window', function ($scope,$filter, basketsService,$window) {
 
         $scope.loading = true;
 
@@ -38,6 +38,12 @@
                     $scope.filteredBaskets = $scope.baskets.slice(begin, end);
             }, responseError);
         };
+
+        this.shareTwitter = function(){
+
+            $window.open("https://twitter.com/intent/tweet?text=Encontré estas canastas orgánicas, visita:&url=https://grupo5-marketplace-organico.herokuapp.com/%23/baskets&via=MpOrganico");
+
+        }
 
     }]);
 })(window.angular);

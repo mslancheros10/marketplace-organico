@@ -37,13 +37,16 @@
 
 
     <div class="row" style="margin-top: 10px;">
-            <div class="col-lg-6 col-lg-offset-3">
+            <div class="col-lg-4 col-lg-offset-3">
                 <div class="input-group">
                     <input type="text" class="form-control" name="q" placeholder="Buscar canastas" ng-model="search"/>
-                        <span  class="input-group-btn">
-                            <button class="btn btn-success" type="button"><i class="fa fa-search"> Buscar</i></button>
-                        </span>
+                    <span  class="input-group-btn">
+                        <button class="btn btn-success" type="button"><i class="fa fa-search"> Buscar</i></button
+                    </span>
                 </div>
+            </div>
+            <div class="col-lg-2">
+                <button class="btn btn-twitter" type="button" ng-click="ctrl.shareTwitter()"><i class="fa fa-twitter"></i></button>
             </div>
         </div>
 

@@ -464,3 +464,8 @@ footer .footer-below {
     display: none;
     opacity: 0;
 }
+
+.btn-twitter{
+    background-color: #1DA1F2 ;
+    color: white;
+}
