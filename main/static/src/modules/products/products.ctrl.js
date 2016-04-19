@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module('productsModule');
 
-    mod.controller('productsCtrl', ['$scope', 'productsService', function ($scope, productsService) {
+    mod.controller('productsCtrl', ['$scope', 'productsService', '$window', '$filter',  function ($scope, productsService, $window, $filter) {
 
         $scope.loading = true;
 
@@ -63,11 +63,18 @@
 
         };
 
+        this.shareTwitter = function(details){
+
+            $window.open("https://twitter.com/intent/tweet?text=Encontré este grandioso producto: " +details.name+" a $" + details.price+ " visita:&url=https://grupo5-marketplace-organico.herokuapp.com&via=MpOrganico");
+        };
+
         this.initDetails = function(){
 
             $scope.details = {};
 
         };
+
+
 
     }]);
 })(window.angular);
