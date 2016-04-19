@@ -52,9 +52,7 @@ class Payment(models.Model):
     date = models.DateTimeField(blank=True)
     user = models.ForeignKey(User, null=True, blank=True)
 
-class Payment(models.Model):
-    price = models.DecimalField(decimal_places=2,max_digits=10)
+class Delivery(models.Model):
     date = models.DateTimeField(blank=True)
-    user = models.ForeignKey(User, null=True, blank=True)
-
-
+    address = models.CharField(max_length=80, blank=True)
+    phone = models.CharField(max_length=10, blank=True)

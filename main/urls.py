@@ -11,6 +11,7 @@ import session.views
 import home.views
 import shoppingItems.views
 import payment.views
+import deliveries.views
 
 
 
@@ -35,4 +36,5 @@ urlpatterns = [
     url(r'^certifiedProviders/', providers.views.get_providers_certified, name='certifiedProviders'),
     url(r'^payment', payment.views.pay_cart, name='payCart'),
     url(r'^home', home.views.home, name='home'),
+    url(r'^deliveries', deliveries.views.get_dates, name='deliveries'),
 ]
