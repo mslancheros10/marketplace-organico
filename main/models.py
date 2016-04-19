@@ -47,6 +47,14 @@ class ShoppingItem(models.Model):
         verbose_name_plural = 'ShoppingItems'
         ordering = ('id',)
 
+class Payment(models.Model):
+    price = models.DecimalField(decimal_places=2,max_digits=10)
+    date = models.DateTimeField(blank=True)
+    user = models.ForeignKey(User, null=True, blank=True)
 
+class Payment(models.Model):
+    price = models.DecimalField(decimal_places=2,max_digits=10)
+    date = models.DateTimeField(blank=True)
+    user = models.ForeignKey(User, null=True, blank=True)
 
 
