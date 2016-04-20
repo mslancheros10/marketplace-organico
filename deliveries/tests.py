@@ -21,4 +21,4 @@ class DeliveryCase(TestCase):
 
         print fechaComparar
 
-        self.assertEqual('2016-04-23', fechaComparar, 'Las fechas no son correctas')
+        self.assertEqual('2016-04-23', str(fechaComparar), 'Las fechas no son correctas')
