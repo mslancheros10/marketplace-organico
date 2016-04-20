@@ -89,7 +89,7 @@
               <div class="modal-footer">
                   <div id="msgAutenticacion" style="color: red;"></div>
                   <button type="button" class="btn btn-primary" href="#/main" data-toggle="modal" data-target="#paymentModal"><span class="glyphicon glyphicon-plus"></span>Pagar</button>
-                  <button type="button" class="btn btn-primary" href="#/main" data-toggle="modal" data-target="#deliveryModal"><span class="glyphicon glyphicon-plus"></span>Fechas</button>
+                  <button type="button" class="btn btn-default" href="#/main" data-toggle="modal" data-target="#deliveryModal"><span class="glyphicon glyphicon-plus"></span>Fechas Entrega</button>
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -236,25 +236,34 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Fechas Entrega</h4>
+                <h4 class="modal-title">Fechas de Entrega</h4>
               </div>
               <div class="modal-body">
                  <div class="col-md-30 col-md-offset-3">
-                    <div class="col-md-30" style="margin: auto"><div class="panel panel-default" style="margin-left: -150px;"><div class="panel-heading"><h3 class="panel-title">Seleccione una fecha:</h3></div><div class="panel-body">
+                    <div class="col-md-30" style="margin: auto"><div class="panel panel-default" style="margin-left: -150px;"><div class="panel-heading"><h3 class="panel-title"></h3></div><div class="panel-body">
                                 <div style="margin-top: 20px;" >
 
                                     <div ng-repeat="deliveries in filteredDeliveries | filter: search">
                                         <div class="col-md-30 col-md-offset-3" style="padding: 5px;">
                                             <div class="caption">
 
-                                                <input type="radio" name="fecha">{{ deliveries.date }}<br>
+                                                <table class="table table-striped">
+                                                <tbody>
+                                                <tr>
+                                                    <th>{{ deliveries.day }}</th><td><div style="text-align: right;"><input type="radio" name="fecha">{{ deliveries.date }}</div></td>
+
+                                                </tr>
+                                                </tbody>
+                                                </table>
 
                                             </div>
                                         </div>
                                     </div>
 
-                                    <input ng-if="paymentMethod!==''" class="btn btn-lg btn-success btn-block" ng-click="" type="submit" value="Aceptar">
-                                    <button class="btn btn-lg btn-default btn-block" ng-click="reset()">Limpiar</button>
+                                      <div class="modal-footer">
+                                          <div id="msgAutenticacion" style="color: red;"></div>
+                                          <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="ctrl.initDates()"><span class="glyphicon glyphicon-plus"></span>Aceptar</button>
+                                      </div>
 
                                 </div>
                             </div>
