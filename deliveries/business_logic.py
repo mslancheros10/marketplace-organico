@@ -25,7 +25,7 @@ def delivery_to_json(delivery):
 def get_delivery_dates(user):
     dates = []
     diaActual = time.strftime("%w")
-
+    print diaActual
     if diaActual == '1' or diaActual == '2' or diaActual == '6' or diaActual == '7':
         dia1 = 'MIERCOLES'
         dia2 = 'SABADO'

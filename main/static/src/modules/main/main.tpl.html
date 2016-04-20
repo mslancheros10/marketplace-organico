@@ -89,7 +89,6 @@
               <div class="modal-footer">
                   <div id="msgAutenticacion" style="color: red;"></div>
                   <button type="button" class="btn btn-primary" href="#/main" data-toggle="modal" data-target="#paymentModal"><span class="glyphicon glyphicon-plus"></span>Pagar</button>
-                  <button type="button" class="btn btn-default" href="#/main" data-toggle="modal" data-target="#deliveryModal"><span class="glyphicon glyphicon-plus"></span>Fechas Entrega</button>
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -211,6 +210,13 @@
                                                                    maxlength="4"
                                                                    class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" required
                                                                    ></div></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        Fechas de Entrega:</th><td><div>
+                                                            <input type="button" ng-model="button" name="Seleccionar" data-toggle="modal" data-target="#deliveryModal"
+                                                               value="Seleccionar"  style="width: 50%"  class="btn btn-primary btn-sm" required
+                                                            ></div></td>
                                                 </tr>
                                             </tbody>
                                         </table>
