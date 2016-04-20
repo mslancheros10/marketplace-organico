@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AnonymousUser, User
+from django.contrib.auth.models import User
 from django.test import TestCase, RequestFactory
 from main.models import Basket, Product, ShoppingItem
 from shoppingItems.views import addProduct, deleteProduct

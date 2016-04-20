@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module('shoppingItemsModule');
 
-    mod.controller('shoppingItemsCtrl', ['$scope', 'shoppingItemsService','$routeParams', function ($scope, shoppingItemsService,$routeParams) {
+    mod.controller('shoppingItemsCtrl', ['$scope', 'shoppingItemsService', function ($scope, shoppingItemsService) {
 
         $scope.loading = true;
 
@@ -24,7 +24,7 @@
             $('#msgNoAutenticado').html("Procesando...");
 
             shoppingItemsService.svcAddProduct(id,tipo).then(function (response) {
-                if(response.data == 'no autenticado'){
+                if(response.data === 'no autenticado'){
                     if(tipo == 'canasta'){
                         $('#mostrarModal').click();
                     }else{
@@ -32,7 +32,7 @@
 
                     }
                 }else{
-                    if(tipo=='product') {
+                    if(tipo === 'product') {
                         $('#msgNoAutenticado').html("Producto agregado.");
                         parent.window.location.reload(true);
                     }

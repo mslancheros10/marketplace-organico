@@ -2,7 +2,6 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from main.models import Product, Basket, ShoppingItem, User
 from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.sessions.models import Session
 
 import business_logic
 
