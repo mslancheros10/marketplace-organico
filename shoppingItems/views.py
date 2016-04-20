@@ -20,7 +20,6 @@ def addProduct(request, id, tipo):
         existBasket = True
         basket = None
         product = None
-        total = 0
 
         idProducto = id
         tipoProducto = tipo
@@ -35,7 +34,6 @@ def addProduct(request, id, tipo):
             if tipoProducto == 'canasta':
                 try:
                     shopItem = ShoppingItem.objects.get(basket=idProducto, state='activo', user=idUser)
-                    total = shopItem.quantity
                 except ObjectDoesNotExist:
                     existItem = False
 
@@ -46,7 +44,6 @@ def addProduct(request, id, tipo):
             else:
                 try:
                     shopItem = ShoppingItem.objects.get(product=idProducto, state='activo', user=idUser)
-                    total = shopItem.quantity
                 except ShoppingItem.DoesNotExist:
                     existItem = False
 
@@ -58,10 +55,9 @@ def addProduct(request, id, tipo):
             if existItem:
                 shopItem.quantity += 1
                 shopItem.save()
-                respuesta = 'Nueva cantidad del producto: ' + str(shopItem.quantity)
             else:
                 shopItem = ShoppingItem()
-                shopItem.quantity = 1;
+                shopItem.quantity = 1
                 shopItem.state = 'activo'
 
                 if existProduct: shopItem.product = product
@@ -70,12 +66,11 @@ def addProduct(request, id, tipo):
 
                 if idUser > -1:
                     user = User.objects.get(id=idUser)
-                    shopItem.user = user;
+                    shopItem.user = user
 
                 shopItem.save()
-                respuesta = 'se crea el nuevo item en shoppingItems'
 
-            response = 'El producto ('+ str(idProducto) +') de tipo ('+ tipoProducto +') fur agregado y relacionado al usuario ('+str(idUser) + ') Total de productos antes del proceso (' +str(total) + ') - Resultado final: '+ respuesta
+            response = 'El producto se ingreso correctamente'
         else:
             response = 'no autenticado'
 
@@ -106,7 +101,6 @@ def get_shoppingItems(request):
 def deleteProduct(request, id):
     if request.method == 'GET':
         response = ''
-        respuesta = ''
         existItem = True
 
 
@@ -120,11 +114,9 @@ def deleteProduct(request, id):
 
             if existItem:
                 shopItem.delete()
-                respuesta = 'Se elimina el shoppItem: ' + str(id)
+                response = 'El producto se elimino correctamente'
             else:
-                respuesta = 'El shoppItem no existe.'
-
-            response = respuesta
+                response = 'El shoppItem no existe.'
         else:
              response = 'no autenticado'
 
