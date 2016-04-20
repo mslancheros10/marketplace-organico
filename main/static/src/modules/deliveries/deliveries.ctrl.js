@@ -44,5 +44,11 @@
 
         };
 
+        this.initDates = function(){
+
+            $scope.deliveries = {};
+
+        };
+
     }]);
 })(window.angular);

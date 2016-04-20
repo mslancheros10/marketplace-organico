@@ -54,5 +54,6 @@ class Payment(models.Model):
 
 class Delivery(models.Model):
     date = models.DateTimeField(blank=True)
-    address = models.CharField(max_length=80, blank=True)
-    phone = models.CharField(max_length=10, blank=True)
+    day = models.CharField(max_length=30, null=True, blank=True)
+    address = models.CharField(max_length=80, null=True, blank=True)
+    phone = models.CharField(max_length=10, null=True, blank=True)
