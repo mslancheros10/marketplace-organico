@@ -1,10 +1,9 @@
-from main.models import ShoppingItem, Product, User
+from main.models import ShoppingItem, User
 from baskets import business_logic as Bask
 from products import business_logic as Prod
 
 from django.core.exceptions import ObjectDoesNotExist
 
-import json
 
 
 '''
