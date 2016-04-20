@@ -56,19 +56,21 @@ def get_delivery_dates(user):
 
 
 def get_dates_by_day(fecha):
-    if fecha.strftime("%w") == 1:
+    d=fecha+timedelta(days=1)
+
+    if fecha.strftime("%w") == '1':
         d=fecha+timedelta(days=2)
     elif fecha.strftime("%w") == '2':
         d=fecha+timedelta(days=1)
-    if fecha.strftime("%w") == '3':
+    elif fecha.strftime("%w") == '3':
         d=fecha+timedelta(days=3)
-    if fecha.strftime("%w") == '4':
+    elif fecha.strftime("%w") == '4':
         d=fecha+timedelta(days=2)
-    if fecha.strftime("%w") == '5':
+    elif fecha.strftime("%w") == '5':
         d=fecha+timedelta(days=1)
-    if fecha.strftime("%w") == '6':
+    elif fecha.strftime("%w") == '6':
         d=fecha+timedelta(days=4)
-    if fecha.strftime("%w") == '7':
+    elif fecha.strftime("%w") == '7':
         d=fecha+timedelta(days=3)
 
     return d
