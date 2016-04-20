@@ -56,7 +56,7 @@
         };
 
         this.getDetails = function (id) {
-
+            $('#msgNoAutenticado').html(" ");
            return productsService.getDetails(id).then(function (response) {
                 $scope.details = response.data;
             }, responseError);

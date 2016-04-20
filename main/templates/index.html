@@ -117,19 +117,22 @@
                     </ul>
                 </div>
 
-                <div ng-if="message.logged" style="float:left; width: 55%;">
+                <div ng-if="message.logged">
                     <ul class="nav navbar-nav navbar-left" ng-if="message.logged">
                         <li><a class="navbar-brand" href="#/main"><span class="glyphicon glyphicon-user"></span>
                             <span>{{ user.username }}</span></a></li>
                         <li><a id="id_option_logout" ng-click="ctrl.logOut()" class="navbar-brand" href="#/main"><span class="glyphicon glyphicon-log-in"></span>
                             <span>Cerrar Sesión</span></a></li>
 
-                    <li><a id="id_carrito" class="navbar-brand" href="#/main" data-toggle="modal" data-target="#shoppingItemsModal"><span
+                    <li><a class="navbar-brand" href="#/main" data-toggle="modal" data-target="#shoppingItemsModal"><span
                                 class="fa fa-shopping-cart"></span> <span>Ver Carrito</span></a></li>
+                       <!-- <a class="navbar-brand" href="javascript:;" onclick="$('#btnCarrito').click();"><span
+                                class="fa fa-shopping-cart"></span> <span>Ver Carrito</span></a></li>-->
+
                     </ul>
                 </div>
 
-                <div ng-if="!message.logged"  id="idMenuLogin" style="float:left; width: 55%;">
+                <div ng-if="!message.logged"  id="idMenuLogin">
                     <ul class="nav navbar-nav navbar-left" ng-if="!message.logged">
 
                         <li style="visibility: hidden;"><a class="navbar-brand" href="#/main"><span class="glyphicon glyphicon-user"></span> <span>Registrarse</span></a>
@@ -144,6 +147,7 @@
         </div><!-- /.container-fluid -->
     </div>
 </nav>
+
 
 <div class="modal fade" tabindex="-1" role="dialog" id="loginModal" ng-controller="loginCtrl as ctrl">
     <div class="container">
