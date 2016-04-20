@@ -40,6 +40,7 @@ def get_basket_products(basket):
 
 def basket_to_json(basket):
     object = {
+        'id':basket.pk,
         'name': basket.name,
         'start_date': basket.start_date,
         'end_date': basket.end_date,
@@ -62,3 +63,17 @@ def get_baskets_from_model():
 
     return baskets
 
+'''
+    Metodo que devuelve el valor total de una canasta.
+'''
+
+
+def get_basket_price(basket):
+    price = 0
+
+    baskets = ShoppingItem.objects.filter(basket=basket, state='promocion').only('product__price')
+
+    for b in baskets:
+        price += b.quantity * b.product.price
+
+    return price

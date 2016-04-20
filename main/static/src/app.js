@@ -8,6 +8,8 @@
         'providersModule',
         'loginModule',
         'shoppingItemsModule',
+        'paymentModule',
+        'deliveriesModule',
     ]);
 
     marketplaceOrganico.config(['$routeProvider', function ($routeProvider) {
@@ -36,6 +38,16 @@
             .when('/shoppingItems', {
                 templateUrl: 'static/src/modules/shoppingItems/shoppingItems.tpl.html',
                 controller: 'shoppingItemsCtrl',
+                controllerAs: 'ctrl'
+            })
+            .when('/payf', {
+                templateUrl: 'static/src/modules/payment/paymentFinished.tpl.html',
+                controller: 'paymentCtrl',
+                controllerAs: 'ctrl'
+            })
+            .when('/deliveries', {
+                templateUrl: 'static/src/modules/deliveries/deliveries.tpl.html',
+                controller: 'deliveriesCtrl',
                 controllerAs: 'ctrl'
             })
             .otherwise('/main');

@@ -15,6 +15,12 @@
                 url: '/addProduct/'+id+'/'+tipo
             });
         };
+        this.svcDeleteProduct = function (id){
+            return $http ({
+                method: 'GET',
+                url: '/deleteProduct/'+id
+            });
+        };
 
     }]);
 })(window.angular);

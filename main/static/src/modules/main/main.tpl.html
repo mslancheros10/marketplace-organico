@@ -36,7 +36,7 @@
 </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="shoppingItemsModal" ng-controller="shoppingItemsCtrl as ctrl" ng-init="ctrl.getShoppingItems()">
+    <div class="modal fade" tabindex="-1" role="dialog" id="shoppingItemsModal" name="shoppingItemsModal" ng-controller="shoppingItemsCtrl as ctrl" ng-init="ctrl.getShoppingItems()">
         <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -60,24 +60,26 @@
                                     <label>{{ record.quantity * product.price | currency:undefined:0}} </label>
                                 </div>
                                 <div class="remove-cart cart-item-cell">
-                                    <i class="fa fa-times"></i>
+                                    <a ng-click="ctrl.deleteProduct(record.id)"><i class="fa fa-times"></i></a>
                                 </div>
                             </div>
-                            <div class="cart-item-div ng-scope" ng-repeat="product in record.baskets ">
-                                <div class="qty cart-item-cell">{{ record.quantity }} -> de Cansta</div>
+                            <div class="cart-item-div ng-scope" ng-repeat="basket in record.baskets ">
+                                <div class="qty cart-item-cell">{{ record.quantity }}</div>
                                 <div class="image cart-item-cell">
-                                   <img ng-src="{{ product.image_url }}" style="margin:auto; height: 300px; width: 100%" alt="{{ product.name }}">
+                                    <img ng-src="http://www.frutasluisi.eu/wp-content/uploads/2014/04/05-frutas-luisi.jpg" style="margin:auto; height: 300px; width: 100%" alt="{{ basket.name }}">
+
                                 </div>
                                 <div class="name cart-item-cell">
-                                    <div>{{ product.name }}</div>
-                                    <small>{{ product.unit_value }} {{ product.unit_name }}</small>
+                                    <div>{{ basket.name }}</div>
+                                    <small>{{ record.price  | currency:undefined:0  }} c/u </small>
                                 </div>
                                 <div class="price cart-item-cell">
-                                    <label>{{ record.quantity * product.price | currency:undefined:0}} </label>
+                                    <label>{{ record.quantity * record.price | currency:undefined:0 }}</label>
                                 </div>
                                 <div class="remove-cart cart-item-cell">
-                                    <i class="fa fa-times"></i>
+                                    <a ng-click="ctrl.deleteProduct(record.id)"><i class="fa fa-times"></i></a>
                                 </div>
+
                             </div>
                         </div>
                       </div>
@@ -85,11 +87,185 @@
                   </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>Pagar</button>
+                  <div id="msgAutenticacion" style="color: red;"></div>
+                  <button type="button" class="btn btn-primary" href="#/main" data-toggle="modal" data-target="#paymentModal"><span class="glyphicon glyphicon-plus"></span>Pagar</button>
+                  <button type="button" class="btn btn-primary" href="#/main" data-toggle="modal" data-target="#deliveryModal"><span class="glyphicon glyphicon-plus"></span>Fechas</button>
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+
+    </div>
+
+     <!-- modal payment -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="paymentModal" name="paymentModal" ng-controller="paymentCtrl as ctrl" ng-init="ctrl.getShoppingItems()">
+        <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Pago</h4>
+              </div>
+              <div class="modal-body">
+                 <div class="col-md-30 col-md-offset-3">
+                    <div class="col-md-30" style="margin: auto"><div class="panel panel-default" style="margin-left: -150px;"><div class="panel-heading"><h3 class="panel-title">Formulario de Pago</h3></div><div class="panel-body">
+                                <div style="margin-top: 20px;" >
+
+                                        <table class="table table-striped table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <th>Subtotal</th><td><div>{{total| currency}}</div></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Iva</th><td><div>{{taxes| currency}}</div></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Total</th><td><div>{{totalandtaxes| currency}}</div></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        Seleccionar Método de pago:</th><td><div>
+                                                            <select ng-model="paymentMethod"  class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" required>
+                                                                <option value=''>Método de pago...</option>
+                                                                <option value='1'>Tarjeta de crédito</option>
+                                                                <option value='2'>PSE</option>
+                                                            </select></div></td>
+                                                </tr>
+                                                <tr ng-if="paymentMethod!==''">
+
+                                                        <a ng-if="paymentMethod==='1'" ng-href="http://static1.squarespace.com/static/530e5705e4b0576b4fd5b6b1/t/53c44adde4b012c9ea0e0951/1394129659548/credit-cards.png" target="_blank"><img class="img-responsive" style="height: 6vw;" ng-src="http://static1.squarespace.com/static/530e5705e4b0576b4fd5b6b1/t/53c44adde4b012c9ea0e0951/1394129659548/credit-cards.png" alt="http://static1.squarespace.com/static/530e5705e4b0576b4fd5b6b1/t/53c44adde4b012c9ea0e0951/1394129659548/credit-cards.png"></a>
+                                                        <a ng-if="paymentMethod==='2'" ng-href="http://www.bancofalabella.com.co/Data/Sites/1/icons/logoPSE.png" target="_blank"><img class="img-responsive" style="height: 6vw;" ng-src="http://www.bancofalabella.com.co/Data/Sites/1/icons/logoPSE.png" alt="http://www.bancofalabella.com.co/Data/Sites/1/icons/logoPSE.png"></a>
+                                                </tr>
+                                                <tr ng-if="paymentMethod==='1'">
+                                                    <th>
+                                                        Número de tarjeta:</th><td><div>
+                                                            <input type="text" ng-model="$parent.cardNumber" ng-pattern="/^[0-9]*$/" name="cardNumber"
+                                                                   class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched"
+                                                                   ></div></td>
+                                                </tr>
+                                                <tr ng-if="paymentMethod==='1'">
+                                                    <th>
+                                                        CCV:</th><td><div>
+                                                            <input type="text" ng-model="ccv" ng-pattern="/^[0-9]*$/" name="ccv" maxlength="4"
+                                                                   class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" required
+                                                                   ></div></td>
+                                                </tr>
+                                                <tr ng-if="paymentMethod==='1'">
+                                                    <th>
+                                                        Mes de vencimiento:</th><td><div>
+                                                            <select ng-model="expMM"  class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" required>
+                                                                <option value=''>Mes...</option>
+                                                                <option value='01'>Enero</option>
+                                                                <option value='02'>Febrero</option>
+                                                                <option value='03'>Marzo</option>
+                                                                <option value='04'>Abril</option>
+                                                                <option value='05'>Mayo</option>
+                                                                <option value='06'>Junio</option>
+                                                                <option value='07'>Julio</option>
+                                                                <option value='08'>Agosto</option>
+                                                                <option value='09'>Septiembre</option>
+                                                                <option value='10'>Octubre</option>
+                                                                <option value='11'>Noviembre</option>
+                                                                <option value='12'>Deciembre</option>
+                                                            </select></div></td>
+                                                </tr>
+                                                <tr ng-if="paymentMethod==='1'">
+                                                    <th>
+                                                        Año de vencimiento:</th><td><div>
+                                                            <select ng-model="expYY"  class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" required>
+                                                                <option value=''>Año...</option>
+                                                                <option value='01'>2015</option>
+                                                                <option value='02'>2016</option>
+                                                                <option value='03'>2017</option>
+                                                                <option value='04'>2018</option>
+                                                                <option value='05'>2019</option>
+                                                                <option value='06'>2020</option>
+                                                                <option value='07'>2021</option>
+                                                                <option value='08'>2022</option>
+                                                            </select></div></td>
+                                                </tr>
+                                                <tr ng-if="paymentMethod==='2'">
+                                                    <th>
+                                                        Banco:</th><td><div>
+                                                            <select ng-model="bank"  class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" required>
+                                                                <option value=''>Banco...</option>
+                                                                <option value='01'>AV Villas</option>
+                                                                <option value='01'>Bancolombia</option>
+                                                                <option value='02'>Banco de Bogota</option>
+                                                                <option value='06'>Banco Popular</option>
+                                                                <option value='05'>City Bank</option>
+                                                                <option value='05'>Davivienda</option>
+                                                                <option value='04'>Helm Bank</option>
+                                                            </select></div></td>
+                                                </tr>
+                                                <tr ng-if="paymentMethod==='2'">
+                                                    <th>
+                                                        Número de cuenta:</th><td><div>
+                                                            <input type="text" ng-model="$parent.cardNumber" ng-pattern="/^[0-9]*$/" name="cardNumberDebit"
+                                                                   class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" required
+                                                                   ></div></td>
+                                                </tr>
+                                                <tr ng-if="paymentMethod==='2'">
+                                                    <th>
+                                                        Contraseña:</th><td><div>
+                                                            <input type="password" ng-model="password" ng-pattern="/^[0-9]*$/" name="password"
+                                                                   maxlength="4"
+                                                                   class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" required
+                                                                   ></div></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <input ng-if="paymentMethod===''" class="btn btn-lg btn-success btn-block" ng-click="endPayment()" type="submit" value="Pagar" disabled="true">
+                                        <input ng-if="paymentMethod!==''" class="btn btn-lg btn-success btn-block" ng-click="endPayment()" type="submit" value="Pagar">
+                                        <button class="btn btn-lg btn-default btn-block" ng-click="reset()">Limpiar</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+        <!-- modal delivery dates -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="deliveryModal" name="deliveryModal" ng-controller="deliveriesCtrl as ctrl" ng-init="ctrl.getDates()">
+            <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Fechas Entrega</h4>
+              </div>
+              <div class="modal-body">
+                 <div class="col-md-30 col-md-offset-3">
+                    <div class="col-md-30" style="margin: auto"><div class="panel panel-default" style="margin-left: -150px;"><div class="panel-heading"><h3 class="panel-title">Seleccione una fecha:</h3></div><div class="panel-body">
+                                <div style="margin-top: 20px;" >
+
+                                    <div ng-repeat="deliveries in filteredDeliveries | filter: search">
+                                        <div class="col-md-30 col-md-offset-3" style="padding: 5px;">
+                                            <div class="caption">
+
+                                                <input type="radio" name="fecha">{{ deliveries.date }}<br>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <input ng-if="paymentMethod!==''" class="btn btn-lg btn-success btn-block" ng-click="" type="submit" value="Aceptar">
+                                    <button class="btn btn-lg btn-default btn-block" ng-click="reset()">Limpiar</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
 
     </div>
     <!-- Header -->
@@ -170,7 +346,9 @@
                     </div>
               </div>
               <div class="modal-footer">
+                  <div id="msgAutenticacion" style="color: red;"></div>
                 <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="ctrl.initDetails()"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
+                <button type="button" class="btn btn-twitter" ng-click="ctrl.shareTwitter(details)"><span class="fa fa-twitter"></span></button>
                 <button type="button" class="btn btn-primary" ng-controller="shoppingItemsCtrl as ctrl" ng-click="ctrl.addProduct(details.id, 'product')"><span class="glyphicon glyphicon-plus"></span>Agregar</button>
               </div>
             </div><!-- /.modal-content -->
