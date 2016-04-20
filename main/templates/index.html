@@ -121,11 +121,14 @@
                     <ul class="nav navbar-nav navbar-left" ng-if="message.logged">
                         <li><a class="navbar-brand" href="#/main"><span class="glyphicon glyphicon-user"></span>
                             <span>{{ user.username }}</span></a></li>
+
+                        <li><a class="navbar-brand" href="#/main" data-toggle="modal" data-target="#shoppingItemsModal"><span
+                                class="fa fa-shopping-cart"></span> <span>Ver Carrito</span></a></li>
+
                         <li><a id="id_option_logout" ng-click="ctrl.logOut()" class="navbar-brand" href="#/main"><span class="glyphicon glyphicon-log-in"></span>
                             <span>Cerrar Sesión</span></a></li>
 
-                    <li><a class="navbar-brand" href="#/main" data-toggle="modal" data-target="#shoppingItemsModal"><span
-                                class="fa fa-shopping-cart"></span> <span>Ver Carrito</span></a></li>
+
                        <!-- <a class="navbar-brand" href="javascript:;" onclick="$('#btnCarrito').click();"><span
                                 class="fa fa-shopping-cart"></span> <span>Ver Carrito</span></a></li>-->
 
@@ -157,6 +160,9 @@
                     <button id="id_button_close" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Iniciar Sesión</h4>
+                    <div align="center">
+                            <img align="center" width="30px" height="30px" id="mySpinner" src="static/src/modules/main/img/spinner.gif" ng-show="loading" />
+                          </div>
                 </div>
                 <div class="modal-body">
                     <div class="row">

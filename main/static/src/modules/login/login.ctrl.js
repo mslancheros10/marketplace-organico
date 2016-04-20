@@ -9,10 +9,13 @@
 
         function responseError(response) {
             console.log(response);
+            $scope.loading = false;
         }
 
         this.logIn = function () {
+            $scope.loading = true;
             return loginService.logIn($scope.user.username,$scope.user.password).then(function (response) {
+                $scope.loading = false;
                 $scope.message = response.data;
                 console.log('logged  = ' + $scope.message)
                 if($scope.message.message !== 'OK'){
