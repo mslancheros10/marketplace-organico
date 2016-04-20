@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 # Create your models here.
+
 
 class Provider(models.Model):
     user = models.OneToOneField(User,null=True)
@@ -34,6 +36,24 @@ class ShoppingItem(models.Model):
     basket = models.ForeignKey(Basket,null=True, blank=True)
     user = models.ForeignKey(User, null=True, blank=True)
     state = models.CharField(max_length=10, blank=True)
+    session = models.CharField(max_length=50, null=True, blank=True)
+    create_date = models.DateTimeField(null=True,blank=True, default=timezone.now)
 
+    def __str__(self):
+        return 'El shoppItem se creo de manera correcta.'
 
+    class Meta:
+        verbose_name = 'ShoppingItem'
+        verbose_name_plural = 'ShoppingItems'
+        ordering = ('id',)
 
+class Payment(models.Model):
+    price = models.DecimalField(decimal_places=2,max_digits=10)
+    date = models.DateTimeField(blank=True)
+    user = models.ForeignKey(User, null=True, blank=True)
+
+class Delivery(models.Model):
+    date = models.DateTimeField(blank=True)
+    day = models.CharField(max_length=30, null=True, blank=True)
+    address = models.CharField(max_length=80, null=True, blank=True)
+    phone = models.CharField(max_length=10, null=True, blank=True)

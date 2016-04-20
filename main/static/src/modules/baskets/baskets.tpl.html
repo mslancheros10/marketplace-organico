@@ -1,14 +1,62 @@
+<!-- Modals -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="msgModal">
+        <div class="container">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="id_button_close" type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Advertencia</h4>
+                    </div>
+                    <div class="modal-body">Para agregar este producto debe estar autenticado.</div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+<!-- Header -->
+    <header style="font-size:8px height:300px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="intro-text">
+                        <span class="name">MarketPlace Orgánico</span>
+                        <hr class="star-light">
+                        <span class="skills">Tu lugar favorito</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
 <div align="center" class="container" ng-controller="basketsCtrl as ctrl" ng-init="ctrl.getBaskets()">
     <div align="center">
         <img align="center" id="mySpinner" src="static/src/modules/main/img/spinner.gif" ng-show="loading" />
     </div>
 
+
+    <div class="row" style="margin-top: 10px;">
+            <div class="col-lg-4 col-lg-offset-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="q" placeholder="Buscar canastas" ng-model="search"/>
+                    <span  class="input-group-btn">
+                        <button class="btn btn-success" type="button"><i class="fa fa-search"> Buscar</i></button
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <button class="btn btn-twitter" type="button" ng-click="ctrl.shareTwitter()"><i class="fa fa-twitter"></i></button>
+            </div>
+        </div>
+
+    <pagination ng-model="currentPage" total-items="baskets.length" max-size="maxSize" boundary-links="true"/>
     <div class="col-sm-12">
-        <div ng-repeat="record in baskets">
+        <div ng-repeat="record in filteredBaskets | filter: search">
             <div class="col-md-4 col-sm-6 col-lg-4 well" style="padding: 5px;">
                 <div class="caption">
 
-                    <h4 align="center"><strong>{{ record.name }} - {{ record.pk }}</strong></h4>
+                    <h4 align="center"><strong>{{ record.name }}</strong></h4>
                 </div>
 
                 <carousel interval="5000" no-wrap="false" style="height: 10%">
@@ -27,11 +75,12 @@
                 <div align="center" class="caption">
                     </br>
                     <p align="center" class="text-danger"><strong> VÁLIDA HASTA: {{ record.end_date | date: 'mediumDate' }}</strong></p>
-                    <button type="button" class="btn btn-success" ng-controller="shoppingItemsCtrl as ctrl" ng-click="ctrl.addProduct(2, 'canasta')"><h4><strong>+ Agregar</strong></h4></button>
+                    <button type="button" class="btn btn-success" ng-controller="shoppingItemsCtrl as ctrl" ng-click="ctrl.addProduct(record.id, 'canasta')"><h4><strong>+ Agregar</strong></h4></button>
                 </div>
 
 
             </div>
         </div>
     </div>
+    <a id="mostrarModal" class="navbar-brand" href="#/baskets" data-toggle="modal" data-target="#msgModal"></a>
 </div>

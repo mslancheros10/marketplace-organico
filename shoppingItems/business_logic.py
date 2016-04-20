@@ -11,7 +11,7 @@ import json
     Method returning all shoppingItems
 '''
 
-def get_shoppinItems_from_model(idUser):
+def get_shoppingItems_from_model(idUser):
 
     shoppingItems = []
 
@@ -29,10 +29,12 @@ def get_shoppinItems_from_model(idUser):
 def shoppingItems_to_json(shoppingItem):
 
     object = {
+        'id':shoppingItem.id,
         'quantity':shoppingItem.quantity,
         'state': shoppingItem.state,
-        'baskets': Bask.get_basket_products(shoppingItem.basket),
-        'products': get_shoppingItem_products(shoppingItem.product)
+        'baskets': get_shoppingItem_baskets(shoppingItem.basket),
+        'products': get_shoppingItem_products(shoppingItem.product),
+        'price': Bask.get_basket_price(shoppingItem.basket)
     }
 
     return object
@@ -42,6 +44,15 @@ def get_shoppingItem_products(product):
     try:
         products.append(Prod.product_to_json(product))
     except:
-        print 'Error..'
+        print 'No hay productos asociados..'
 
     return products
+
+def get_shoppingItem_baskets(basket):
+    baskets = []
+    try:
+        baskets.append(Bask.basket_to_json(basket))
+    except:
+        print 'No hay canastas asociadas..'
+
+    return baskets
