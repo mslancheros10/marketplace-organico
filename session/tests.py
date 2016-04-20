@@ -39,3 +39,4 @@ class SessionFunctionalTest(TestCase):
         logout_option.click()
         self.browser.implicitly_wait(8)
 
+
