@@ -1,20 +1,24 @@
-from django.contrib.auth.models import AnonymousUser, User
+from django.test import TestCase
 from django.test import TestCase, RequestFactory
 from main.models import Delivery
 from deliveries.views import get_dates
 
-# Create your tests here.
+from datetime import date, timedelta
+import time
 
-USERNAME_TEST = 'pruebas'
 
-class DeliveriesCase(TestCase):
+class DeliveryCase(TestCase):
+
     def setUp(self):
         self.factory = RequestFactory()
-        self.user = User.objects.create_user(username=USERNAME_TEST, email='', password='top_secret')
 
-        delivery = get_dates()
+    def test_get_dates(self):
+        request = self.factory.get('/customer/deliveries')
+        request.method = 'GET'
+
+        fechaComparar = date.today()+timedelta(days=3)
 
 
+        print fechaComparar
 
-
-
+        self.assertEqual('2016-04-23', str(fechaComparar), 'Las fechas no son correctas')

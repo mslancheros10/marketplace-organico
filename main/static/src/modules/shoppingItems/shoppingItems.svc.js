@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module('shoppingItemsModule');
 
-    mod.service('shoppingItemsService', ['$http', 'shoppingItemsContext', function ($http, context) {
+    mod.service('shoppingItemsService', ['$http', 'shoppingItemsContext', function ($http) {
 
         this.svcGetShoppingItems = function () {
             return $http({
