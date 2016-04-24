@@ -3,6 +3,8 @@
 
     mod.controller('mainCtrl', ['$scope', 'mainService', function ($scope, mainService) {
 
+        $scope.rol = 'client';
+
         function responseError(response) {
             console.log(response);
         }
