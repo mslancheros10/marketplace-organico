@@ -7,6 +7,7 @@ from django.utils import timezone
 class Provider(models.Model):
     user = models.OneToOneField(User,null=True)
     certificado = models.BooleanField(default=False)
+    active = models.BooleanField(default=False)
 
 class Farm(models.Model):
     name = models.CharField(max_length=100,blank=True)

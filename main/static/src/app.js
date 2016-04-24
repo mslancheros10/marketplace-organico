@@ -10,6 +10,7 @@
         'shoppingItemsModule',
         'paymentModule',
         'deliveriesModule',
+        'registerModule',
     ]);
 
     marketplaceOrganico.config(['$routeProvider', function ($routeProvider) {
@@ -48,6 +49,11 @@
             .when('/deliveries', {
                 templateUrl: 'static/src/modules/deliveries/deliveries.tpl.html',
                 controller: 'deliveriesCtrl',
+                controllerAs: 'ctrl'
+            })
+            .when('/register', {
+                templateUrl: 'static/src/modules/register/register.tpl.html',
+                controller: 'registerCtrl',
                 controllerAs: 'ctrl'
             })
             .otherwise('/main');

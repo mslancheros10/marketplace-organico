@@ -37,3 +37,15 @@ def is_logged_user(request):
 def logout_user(request):
     logout(request)
     return JsonResponse({'logout':True})
+
+
+'''
+    Register provider
+'''
+
+@csrf_exempt
+def register_provider(request):
+    if request.method == 'POST':
+        response = business_logic.register_provider(request)
+        print response
+        return JsonResponse(response)
