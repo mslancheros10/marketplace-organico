@@ -12,7 +12,7 @@ from main.models import Farm, Product, Basket, ShoppingItem, Provider
 
 @admin.register(Provider)
 class AdminProvider(admin.ModelAdmin):
-        list_display = ('user','certificado',)
+        list_display = ('user','active','certificado')
         List_Filter = ('user',)
 
 @admin.register(Farm)

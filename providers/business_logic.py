@@ -29,7 +29,7 @@ def provider_to_json(farm):
 '''
 def get_providers_from_model():
     farm = []
-    for p in Farm.objects.all():
+    for p in Farm.objects.all().filter(provider__active=True):
         farm.append(provider_to_json(p))
 
     return farm
@@ -37,7 +37,7 @@ def get_providers_from_model():
 
 def get_providers_certified():
     farm=[]
-    temp = Farm.objects.all()\
+    temp = Farm.objects.all().filter(provider__active=True)\
         .only('name','latitude','longitude','size','provider__certificado')\
         .filter(provider__certificado=True)
     for p in temp:
