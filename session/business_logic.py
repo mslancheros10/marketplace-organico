@@ -17,12 +17,18 @@ def login_request(request):
 
     if user is not None:
         login(request,user)
-        message = 'OK'
+        message = 'El usuario ha iniciado sesion'
+        status = 'OK'
     else:
-        message = 'Usuario y/o clave invalida'
+        message = 'Usuario o Clave incorrecta'
+        status = 'ERROR'
 
     print message
 
     print request.user.is_authenticated()
 
-    return message
+    return {
+        'username':username,
+        'status':status,
+        'message':message
+    }
