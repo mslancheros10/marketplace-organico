@@ -37,4 +37,6 @@ urlpatterns = [
     url(r'^payment', payment.views.pay_cart, name='payCart'),
     url(r'^home', home.views.home, name='home'),
     url(r'^deliveries', deliveries.views.get_dates, name='deliveries'),
+    url(r'^register/provider', session.views.register_provider, name='registerProvider'),
+
 ]
