@@ -13,7 +13,7 @@ def login_request(request):
     if request.method == 'POST':
         response = business_logic.login_request(request)
         print response
-        return JsonResponse({'message':response})
+        return JsonResponse(response)
 
 
 '''
