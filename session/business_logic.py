@@ -20,10 +20,18 @@ def login_request(request):
 
     user = authenticate(username=username, password=password)
 
+    rol = 'client'
+
     if user is not None:
         login(request, user)
         message = 'El usuario ha iniciado sesion'
         status = 'OK'
+
+        existAsProvider =Provider.objects.filter(user__username=username)
+
+        if existAsProvider.count() > 0:
+            rol = 'provider'
+
     else:
         message = 'Usuario o Clave incorrecta'
         status = 'ERROR'
@@ -35,7 +43,8 @@ def login_request(request):
     return {
         'username': username,
         'status': status,
-        'message': message
+        'message': message,
+        'rol': rol,
     }
 
 
