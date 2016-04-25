@@ -24,6 +24,7 @@
                 }else {
                     $scope.error = false;
                     $scope.user = {};
+                    $scope.user = {};
                     $('#loginModal').modal('hide')
                     window.location.assign('#/main');
                     window.location.reload(true);
