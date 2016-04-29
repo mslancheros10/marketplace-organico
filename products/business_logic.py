@@ -16,7 +16,8 @@ def product_to_json(product):
         'unit_value': product.unit_value,
         'unit_name': product.unit_name,
         'description': product.description,
-        'quantity': product.quantity
+        'quantity': product.quantity,
+        'nameFarm': product.farm.name
     }
     return object
 
@@ -53,4 +54,19 @@ def get_certified_products():
         .filter(farm__provider__certificado=True)
     for p in temp:
         products.append(product_to_json(p))
+    return products
+
+
+'''
+    Method returning product of farm
+'''
+
+def get_products_farm(user):
+    products = []
+    temp = Product.objects.all()\
+        .only('name','price','image_url','unit_value','unit_name','farm__provider__user')\
+        .filter(farm__provider__user=user)
+    for p in temp:
+        products.append(product_to_json(p))
+
     return products

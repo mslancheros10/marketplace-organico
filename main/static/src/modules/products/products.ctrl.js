@@ -63,6 +63,23 @@
 
         };
 
+
+        this.getProductsFarm = function (user) {
+
+            return productsService.getProductsFarm(user).then(function (response) {
+                $scope.loading = false;
+                console.log(response);
+                $scope.products = response.data;
+
+                var begin = (($scope.currentPage - 1) * $scope.numPerPage);
+                var end = begin + $scope.numPerPage;
+
+                $scope.filteredProducts = $scope.products.slice(begin, end);
+
+            }, responseError);
+        };
+
+
         this.shareTwitter = function(details){
 
             $window.open("https://twitter.com/intent/tweet?text=Encontré este grandioso producto: " +details.name+" a $" + details.price+ " visita:&url=https://grupo5-marketplace-organico.herokuapp.com&via=MpOrganico");

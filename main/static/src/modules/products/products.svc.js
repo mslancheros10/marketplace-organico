@@ -24,5 +24,12 @@
             });
         };
 
+        this.getProductsFarm = function (user) {
+            return $http({
+                method: 'GET',
+                url: '/productsFarm/'+user
+            });
+        };
+
     }]);
 })(window.angular);
