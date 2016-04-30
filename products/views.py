@@ -31,3 +31,13 @@ def details(request, id):
     if request.method == 'GET':
         response = business_logic.get_product_details(id)
         return JsonResponse(response, safe=False)
+
+'''
+    REST Service retrieving a product farm
+'''
+
+@csrf_exempt
+def get_products_farm(request, name):
+    if request.method == 'GET':
+        response = business_logic.get_products_farm(name)
+        return JsonResponse(response,safe=False)

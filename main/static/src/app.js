@@ -56,6 +56,11 @@
                 controller: 'registerCtrl',
                 controllerAs: 'ctrl'
             })
+            .when('/productsFarm', {
+                templateUrl: 'static/src/modules/products/products.tpl.html',
+                controller: 'productsCtrl',
+                controllerAs: 'ctrl'
+            })
             .otherwise('/main');
     }]);
 })(window.angular);
