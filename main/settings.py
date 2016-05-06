@@ -158,3 +158,9 @@ STATICFILES_DIRS = (
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
+# EMAIL SETTINGS
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'grupo5procesos2016@gmail.com'
+EMAIL_HOST_PASSWORD = '$Procesos2016'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
