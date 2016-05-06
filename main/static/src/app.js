@@ -11,6 +11,8 @@
         'paymentModule',
         'deliveriesModule',
         'registerModule',
+        'commentsModule'
+
     ]);
 
     marketplaceOrganico.config(['$routeProvider', function ($routeProvider) {
