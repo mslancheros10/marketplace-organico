@@ -94,6 +94,10 @@
     <script src="static/src/modules/register/register.svc.js"></script>
     <script src="static/src/modules/register/register.ctrl.js"></script>
 
+    <script src="static/src/modules/comments/comments.mod.js"></script>
+    <script src="static/src/modules/comments/comments.svc.js"></script>
+    <script src="static/src/modules/comments/comments.ctrl.js"></script>
+
 </head>
 <body>
 <nav ng-controller="mainCtrl as ctrl" ng-init="ctrl.isLogged()">
@@ -135,6 +139,9 @@
 
                         <li><a id="id_option_logout" ng-click="ctrl.logOut()" class="navbar-brand" href="#/main"><span class="glyphicon glyphicon-log-in"></span>
                             <span>Cerrar Sesión</span></a></li>
+
+                        <li><a class="navbar-brand" href="" data-toggle="modal" data-target="#contactoModal"><span
+                                class="glyphicon glyphicon-envelope"></span> <span>Contáctenos</span></a></li>
 
 
                        <!-- <a class="navbar-brand" href="javascript:;" onclick="$('#btnCarrito').click();"><span
