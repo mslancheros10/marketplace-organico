@@ -82,7 +82,7 @@ def comments(request):
 
         comentario = "<strong>Comentario:</strong> %s <br><br><strong>Enviado por:</strong> %s" % (comment, userEmail)
 
-        emailComentario = 'candresdelgado@gmail.com'
+        emailComentario = 'grupo5procesos2016@gmail.com'
         asunto = 'MpOrganico - Comentario'
         text_content = ''
         html_content = comentario
