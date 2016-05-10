@@ -68,6 +68,11 @@
                 controller: 'productsCtrl',
                 controllerAs: 'ctrl'
             })
+            .when('/addProducts', {
+                templateUrl: 'static/src/modules/products/addProducts.html',
+                controller: 'productsCtrl',
+                controllerAs: 'ctrl'
+            })
             .otherwise('/main');
     }]);
 })(window.angular);

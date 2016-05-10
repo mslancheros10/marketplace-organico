@@ -1,6 +1,8 @@
 from django.conf.urls import include, url
 
 from django.contrib import admin
+from django.views.generic import TemplateView
+
 admin.autodiscover()
 
 import redesSociales.views
@@ -22,6 +24,7 @@ import deliveries.views
 urlpatterns = [
     url(r'^$', redesSociales.views.index, name='index'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/productList/', products.views.add_product_list, name='productList'),
     url(r'^baskets/', baskets.views.get_baskets, name='baskets'),
     url(r'^products/', products.views.get_products, name='products'),
     url(r'^allProducts/', products.views.get_all_products, name='allProducts'),
@@ -43,6 +46,7 @@ urlpatterns = [
     url(r'^productsFarm/(\d+)', products.views.get_products_farm, name='productsFarm'),
     url(r'^productsFarm', products.views.get_products_farm, name='productsFarm'),
     url(r'^comments', session.views.comments, name='comments'),
+    url(r'^registerProductList', products.views.register_product_list, name='register_product_list'),
     url(r'^addProductFarm/(\d+)/(.+)', products.views.addProductFarm, name='addProductFarm'),
     url(r'^client/update', session.views.update_client, name='updateClient'),
     url(r'^client', session.views.get_client, name='client'),
