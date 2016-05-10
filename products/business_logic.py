@@ -1,7 +1,7 @@
 from math import fabs
 
 from main.models import Product, Farm
-
+import json
 from django.utils import timezone
 
 '''
@@ -18,7 +18,9 @@ def product_to_json(product):
         'image': product.image_url,
         'stock': product.quantity,
         'unit_value': product.unit_value,
+        'unit_name': product.unit_name,
         'description': product.description,
+        'quantity': product.quantity,
         'nameFarm': product.farm.name
     }
     return object
@@ -135,3 +137,21 @@ def addProduct(user, id, unit_name, unit_value, price, quantity):
     listProduct = get_products_farm(user);
 
     return listProduct
+
+def register_products(objs):
+    products = json.loads(objs)
+    print products
+    for p in products:
+        print p
+        product = Product()
+        product.name = p['name']
+        product.price = p['price']
+        product.image_url = p['image_url']
+        product.unit_value = p['unit_value']
+        product.unit_name = p['unit_name']
+        farm = Farm.objects.get(id=p['farm'])
+        product.farm = farm
+        product.description = p['description']
+        product.quantity = p['quantity']
+        product.save()
+        print 'objeto guardado'

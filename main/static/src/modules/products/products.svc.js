@@ -38,5 +38,13 @@
             });
         };
 
+        this.regsisterList = function (data) {
+            return $http({
+                method: 'POST',
+                url: '/registerProductList',
+                data:data
+            });
+        };
+
     }]);
 })(window.angular);
