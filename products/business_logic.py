@@ -2,6 +2,7 @@ from math import fabs
 
 from main.models import Product, Farm
 import json
+
 from django.utils import timezone
 
 '''
@@ -18,9 +19,7 @@ def product_to_json(product):
         'image': product.image_url,
         'stock': product.quantity,
         'unit_value': product.unit_value,
-        'unit_name': product.unit_name,
         'description': product.description,
-        'quantity': product.quantity,
         'nameFarm': product.farm.name
     }
     return object
