@@ -91,6 +91,12 @@
 
         };
 
+        $scope.registerList = function () {
+            productsService.regsisterList({
+                    'list': document.getElementById("productList").value
+            });
+        }
+
 
 
     }]);

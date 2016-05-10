@@ -1,9 +1,10 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 
 import json
 
 import business_logic
+from django.conf import settings
 
 '''
     REST Service retrieving current baskets
@@ -41,3 +42,22 @@ def get_products_farm(request, name):
     if request.method == 'GET':
         response = business_logic.get_products_farm(name)
         return JsonResponse(response,safe=False)
+
+@csrf_exempt
+def add_product_list(request):
+    if request.user.is_superuser:
+        return HttpResponseRedirect('/#/addProducts/')
+    else:
+        return HttpResponseRedirect('/admin/')
+
+@csrf_exempt
+def register_product_list(request):
+    if request.user.is_superuser:
+        objs = json.loads(request.body)
+        business_logic.register_products(objs['list'])
+        return HttpResponseRedirect('/#/main/')
+    else:
+        return HttpResponseRedirect('/admin/')
+
+
+
