@@ -1,5 +1,7 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from main.models import Product, User
+from django.core.exceptions import ObjectDoesNotExist
 
 import json
 
@@ -41,3 +43,29 @@ def get_products_farm(request, name):
     if request.method == 'GET':
         response = business_logic.get_products_farm(name)
         return JsonResponse(response,safe=False)
+
+
+
+'''
+    Add product to Farm
+'''
+@csrf_exempt
+def addProductFarm(request, name, quantity):
+
+    if request.method == 'GET':
+        idUser = request.user.id
+        existItem = True
+
+        try:
+            products = Product.objects.get(name=name, user=idUser)
+        except ObjectDoesNotExist:
+            existItem = False
+
+        if(products.quantity > 0):
+            response = 'El producto ya existe en la lista de productos'
+        else:
+            products.save()
+            response = 'El producto se ingreso correctamente'
+
+
+        return JsonResponse(response, safe=False)

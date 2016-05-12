@@ -14,30 +14,76 @@
         </div>
     </header>
 
-<div align="center" class="container" ng-controller="productsCtrl as ctrl" ng-init="ctrl.getProductsFarm(2)">
-    <div align="center">
-        <img align="center" id="mySpinner" src="static/src/modules/main/img/spinner.gif" ng-show="loading"/>
-    </div>
 
-    <br><br><br>
 
-    <pagination ng-model="currentPage" total-items="products.length" max-size="maxSize" boundary-links="true"/>
-        <div ng-repeat="product in filteredProducts | filter: search">
-            <div class="col-md-4 col-sm-6 col-lg-4 well" style="padding: 5px;">
-                <div class="caption">
-                    <h4 align="center"><strong>{{ product.name }}</strong></h4>
-                    <img ng-src="{{ product.image_url }}" style="margin:auto; height: 280px; width: 90%"
-                         alt="{{ product.name }}">
+    <br><br>
+
+<div id="productsTable">
+
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addProduct" ng-click="" style="margin-left: auto; margin-right: auto"><strong>Adicionar</strong></button>
+
+    <table id="table-products" class="table table-hover" style="width: 60%; margin-left: auto; margin-right: auto">
+          <thead>
+                <tr class="text-center">
+                  <th data-field="image_url">Imagen</th>
+                  <th data-field="name">Nombre</th>
+                  <th data-field="description">Descripcion</th>
+                  <th data-field="price">Precio</th>
+                  <th data-field="id">Eliminar</th>
+                  <th data-field="id">Modificar</th>
+                </tr>
+          </thead>
+    </table>
+
+</div>
+
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="addProduct" ng-controller="productsCtrl as ctrl" ng-init="ctrl.getProducts()">
+    <div class="modal-dialog">
+        <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="ctrl.initDetails()"><span aria-hidden="true">&times;</span></button>
+
+              </div>
+              <div class="modal-body">
                     <div class="caption">
-                        <h2><strong>{{ product.price | currency:undefined:0}}</strong></h2>
-                        <h4>
-                            <small>{{ product.unit_value }} {{ product.unit_name }}</small>
-                        </h4>
+                        <div class="panel-heading"><h3 class="panel-title">Adicionar Producto</h3></div>
+                        <table class="table table-striped table-bordered">
+                            <tbody>
+
+                                <tr>
+                                    <th>
+                                    Seleccionar Producto:</th><td><div>
+                                    <select ng-model="products" class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" required>
+                                         <option ng-repeat="option in filteredProducts" value="{{option.id}}">{{option.name}}</option>
+                                    </select></div></td>
+                                </tr>
+
+                                <tr>
+                                    <th>
+                                        Precio:</th><td><div>
+                                        <input type="text" name="price"
+                                        class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched"
+                                    ></div></td>
+                                </tr>
+
+                                <tr>
+                                    <th>
+                                        Cantidad:</th><td><div>
+                                        <input type="text" name="quantity"
+                                        class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched"
+                                    ></div></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <input class="btn btn-lg btn-success btn-block" ng-click="" type="submit" value="Aceptar">
+
                     </div>
-                    <p>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" ng-click="ctrl.getDetails( product.id )"><strong>VER DETALLE</strong></button>
-                    </p>
-                </div>
-            </div>
+              </div>
+
         </div>
+    </div>
 </div>
