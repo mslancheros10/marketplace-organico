@@ -80,3 +80,33 @@ def register_provider(request):
     farm.save()
 
     return {'status': 'OK'}
+
+def register_client(request):
+    status = 'Error'
+
+    if request.method == 'POST':
+        json_client = json.loads(request.body.decode('utf-8'))
+
+        print json_client
+
+        username = json_client.get('username')
+        password = json_client.get('password')
+        email = json_client.get('email')
+
+        if(username <> "" and password <> "" and email <> ""):
+            existUser = User.objects.filter(username=username)
+
+            if existUser.count() > 0:
+                status = 'Usuario ya existe.'
+            else:
+                userModel = User.objects.create_user(username=username, password=password, email=email)
+                userModel.save()
+                status = 'OK'
+        else:
+            status = 'Todos los campos son obligatorios.'
+    else:
+        status = 'Metodo no POST.'
+
+    return {'status': status}
+
+
