@@ -67,6 +67,17 @@ def register_provider(request):
         print response
         return JsonResponse(response)
 
+'''
+    Register client
+'''
+
+
+@csrf_exempt
+def register_client(request):
+    if request.method == 'POST':
+        response = business_logic.register_client(request)
+        print response
+        return JsonResponse(response)
 
 '''
     PQR user
