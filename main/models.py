@@ -58,3 +58,9 @@ class Delivery(models.Model):
     day = models.CharField(max_length=30, null=True, blank=True)
     address = models.CharField(max_length=80, null=True, blank=True)
     phone = models.CharField(max_length=10, null=True, blank=True)
+
+class Client(models.Model):
+    user = models.OneToOneField(User,null=True)
+    address = models.CharField(max_length=100, null=True, blank=True)
+    phone = models.CharField(max_length=30, null=True, blank=True)
+    active = models.BooleanField(default=False)

@@ -42,21 +42,23 @@
             Diligencia todos los campos
         </div>
         <h3 class="control-label" for="client">Información Cliente</h3>
-        <div class="form-group">
-            <label class="control-label" for="username">Username:</label>
-            <input type="text" id="username" name="username" class="form-control" ng-model="newClient.username">
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="password">Password:</label>
-            <input type="password" id="password" name="password" class="form-control" ng-model="newClient.password">
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="email">E-mail:</label>
-            <input type="email" id="email" name="email" class="form-control" ng-model="newClient.email">
-        </div>
+        <form id="formClient" name="formClient">
+            <div class="form-group">
+                <label class="control-label" for="username">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" ng-model="newClient.username" ng-required="true">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="password">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" ng-model="newClient.password" ng-required="true">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="email">E-mail:</label>
+                <input type="email" id="email" name="email" class="form-control" ng-model="newClient.email">
+            </div>
 
-        <button type="submit" class="btn btn-primary" ng-click="ctrl.registerClient()">Registrarme</button>
-        <a href="#/main" class="btn btn-default">Volver</a>
+            <button type="submit" ng-disabled="formClient.$invalid" class="btn btn-primary" ng-click="ctrl.registerClient()">Registrarme</button>
+            <a href="#/main" class="btn btn-default">Volver</a>
+        </form>
 
     </div>
 
