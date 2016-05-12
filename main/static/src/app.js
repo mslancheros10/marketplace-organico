@@ -11,7 +11,8 @@
         'paymentModule',
         'deliveriesModule',
         'registerModule',
-        'commentsModule'
+        'commentsModule',
+        'clientsModule'
 
     ]);
 
@@ -37,7 +38,7 @@
                 templateUrl: 'static/src/modules/home/home.html',
                 controller: '',
                 controllerAs: ''
-            })        
+            })
             .when('/shoppingItems', {
                 templateUrl: 'static/src/modules/shoppingItems/shoppingItems.tpl.html',
                 controller: 'shoppingItemsCtrl',
@@ -56,6 +57,10 @@
             .when('/register', {
                 templateUrl: 'static/src/modules/register/register.tpl.html',
                 controller: 'registerCtrl',
+                controllerAs: 'ctrl'
+            })
+            .when('/clients', {
+                controller: 'clientsCtrl',
                 controllerAs: 'ctrl'
             })
             .when('/productsFarm', {

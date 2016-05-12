@@ -22,6 +22,7 @@
             email:''
         };
 
+
         function responseError(response) {
             console.log(response);
             $scope.loading = false;
@@ -68,6 +69,8 @@
         };
 
         this.enableClientRegister = function () {
+            $scope.newClient.username = ''
+            $scope.newClient.password = ''
             this.showRegisterProvider = false;
         };
 
