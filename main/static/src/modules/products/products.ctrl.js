@@ -19,7 +19,7 @@
             var begin = (($scope.currentPage - 1) * $scope.numPerPage);
             var end = begin + $scope.numPerPage;
 
-            $scope.filteredProducts = $scope.products.slice(begin, end);
+            //$scope.filteredProducts = $scope.products.slice(begin, end);
         });
 
         function responseError(response) {
@@ -67,6 +67,7 @@
         this.getProductsFarm = function (user) {
 
             return productsService.getProductsFarm(user).then(function (response) {
+
                 $scope.loading = false;
                 console.log(response);
                 $scope.products = response.data;
@@ -93,5 +94,9 @@
 
 
 
+
     }]);
 })(window.angular);
+
+
+
