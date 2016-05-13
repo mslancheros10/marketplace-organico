@@ -46,5 +46,6 @@ urlpatterns = [
     url(r'^addProductFarm/(\d+)/(.+)', products.views.addProductFarm, name='addProductFarm'),
     url(r'^client/update', session.views.update_client, name='updateClient'),
     url(r'^client', session.views.get_client, name='client'),
+    url(r'^cart/add', shoppingItems.views.addProduct_rest, name='addProductRest'),
     url(r'^addProductFarm', products.views.addProductFarm, name='addProductFarm'),
 ]
