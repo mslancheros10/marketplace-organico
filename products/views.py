@@ -39,9 +39,11 @@ def details(request, id):
 '''
 
 @csrf_exempt
-def get_products_farm(request, name):
+def get_products_farm(request):
     if request.method == 'GET':
-        response = business_logic.get_products_farm(name)
+        user = request.user
+
+        response = business_logic.get_products_farm(user.id)
         return JsonResponse(response,safe=False)
 
 
@@ -50,22 +52,14 @@ def get_products_farm(request, name):
     Add product to Farm
 '''
 @csrf_exempt
-def addProductFarm(request, name, quantity):
+def addProductFarm(request):
 
-    if request.method == 'GET':
-        idUser = request.user.id
-        existItem = True
-
-        try:
-            products = Product.objects.get(name=name, user=idUser)
-        except ObjectDoesNotExist:
-            existItem = False
-
-        if(products.quantity > 0):
-            response = 'El producto ya existe en la lista de productos'
+    if request.method == 'POST':
+        if request.user.is_authenticated():
+            user = request.user
         else:
-            products.save()
-            response = 'El producto se ingreso correctamente'
+            user = None
 
+        response = business_logic.addProduct(user)
 
-        return JsonResponse(response, safe=False)
+        return JsonResponse("OK", safe=False)

@@ -62,8 +62,28 @@
 
                                 <tr>
                                     <th>
+                                        Tipo Unidad:</th><td><div>
+                                        <select ng-model="expMM"  class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" required>
+                                            <option value='Kilo'>Kilo</option>
+                                            <option value='Gramo'>Gramo</option>
+                                            <option value='Litro'>Litro</option>
+                                            <option value='Mililitro'>Mililitro</option>
+                                            <option value='Onza'>Onza</option>
+                                        </select></div></td>
+                                </tr>
+
+                                <tr>
+                                    <th>
+                                        Valor Unidad:</th><td><div>
+                                        <input type="text" name="unit_value"
+                                        class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched"
+                                    ></div></td>
+                                </tr>
+
+                                <tr>
+                                    <th>
                                         Precio:</th><td><div>
-                                        <input type="text" name="price"
+                                        <input type="text" name="price" ng-model="$parent.price"
                                         class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched"
                                     ></div></td>
                                 </tr>
@@ -76,10 +96,12 @@
                                     ></div></td>
                                 </tr>
 
+
                             </tbody>
                         </table>
 
-                        <input class="btn btn-lg btn-success btn-block" ng-click="" type="submit" value="Aceptar">
+
+                        <input class="btn btn-lg btn-success btn-block" ng-click="addMyProduct()" type="submit" value="Aceptar" style="width: 30%">
 
                     </div>
               </div>

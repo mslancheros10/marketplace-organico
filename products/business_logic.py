@@ -1,4 +1,6 @@
-from main.models import Product
+from math import fabs
+
+from main.models import Product, Farm
 
 from django.utils import timezone
 
@@ -70,3 +72,29 @@ def get_products_farm(user):
         products.append(product_to_json(p))
 
     return products
+
+
+'''
+    Method add product of farm
+'''
+def addProduct(user):
+
+    print 'Entro BL addProduct'
+
+    product = Product()
+    farm = Farm.objects.all().filter(provider__active=True)\
+        .only('name','latitude','longitude','size','provider__certificado')\
+        .filter(provider__user=user)
+
+    product.name = 'Apio'
+    product.price = '1000'
+    product.image_url = ''
+    product.unit_value = '10'
+    product.unit_name = 'libras'
+    product.farm = farm[0]
+    product.description = 'Apio'
+    product.quantity = '50'
+
+    product.save()
+
+    return product

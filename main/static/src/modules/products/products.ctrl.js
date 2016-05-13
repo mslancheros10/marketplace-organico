@@ -3,6 +3,8 @@
 
     mod.controller('productsCtrl', ['$scope', 'productsService', '$window', '$filter',  function ($scope, productsService, $window, $filter) {
 
+        var precio = 0;
+
         $scope.loading = true;
 
         $scope.filteredProducts = [];
@@ -64,9 +66,22 @@
         };
 
 
-        this.getProductsFarm = function (user) {
+        $scope.addMyProduct = function () {
+                var error = "";
+                var valide = true;
+                var re = "";
+                this.precio = $scope.price;
 
-            return productsService.getProductsFarm(user).then(function (response) {
+                productsService.addProduct({
+                    'price': this.precio
+                });
+
+        };
+
+
+        this.getProductsFarm = function () {
+
+            return productsService.getProductsFarm().then(function (response) {
 
                 $scope.loading = false;
                 console.log(response);

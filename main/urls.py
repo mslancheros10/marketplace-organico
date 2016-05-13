@@ -38,7 +38,7 @@ urlpatterns = [
     url(r'^home', home.views.home, name='home'),
     url(r'^deliveries', deliveries.views.get_dates, name='deliveries'),
     url(r'^register/provider', session.views.register_provider, name='registerProvider'),
-    url(r'^productsFarm/(\d+)', products.views.get_products_farm, name='productsFarm'),
+    url(r'^productsFarm', products.views.get_products_farm, name='productsFarm'),
     url(r'^comments', session.views.comments, name='comments'),
-    url(r'^addProductFarm/(\d+)/(.+)', products.views.addProductFarm, name='addProductFarm'),
+    url(r'^addProductFarm', products.views.addProductFarm, name='addProductFarm'),
 ]
