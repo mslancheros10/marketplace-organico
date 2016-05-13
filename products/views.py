@@ -13,9 +13,15 @@ import business_logic
 
 
 @csrf_exempt
-def get_products(request):
+def get_all_products(request):
     if request.method == 'GET':
         response = business_logic.get_products_from_model()
+        return JsonResponse(response,safe=False)
+
+@csrf_exempt
+def get_products(request):
+    if request.method == 'GET':
+        response = business_logic.get_products_from_model_rest()
         return JsonResponse(response,safe=False)
 
 @csrf_exempt

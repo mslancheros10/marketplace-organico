@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^baskets/', baskets.views.get_baskets, name='baskets'),
     url(r'^products/', products.views.get_products, name='products'),
+    url(r'^allProducts/', products.views.get_all_products, name='allProducts'),
     url(r'^addProduct/(\d+)/(.+)', shoppingItems.views.addProduct, name='addProduct'),
     url(r'^deleteProduct/(\d+)', shoppingItems.views.deleteProduct, name='deleteProduct'),
     url(r'^shoppingItems', shoppingItems.views.get_shoppingItems, name='shoppingItems'),
@@ -44,4 +45,5 @@ urlpatterns = [
     url(r'^addProductFarm/(\d+)/(.+)', products.views.addProductFarm, name='addProductFarm'),
     url(r'^client/update', session.views.update_client, name='updateClient'),
     url(r'^client', session.views.get_client, name='client'),
+    url(r'^cart/add', shoppingItems.views.addProduct_rest, name='addProductRest'),
 ]
