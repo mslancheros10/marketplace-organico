@@ -61,12 +61,12 @@
 
                 <carousel interval="5000" no-wrap="false" style="height: 10%">
                     <slide ng-repeat="product in record.products" active="slide.active">
-                        <img ng-src="{{ product.image_url }}" style="margin:auto; height: 300px; width: 100%" alt="{{ product.name }}">
+                        <img ng-src="{{ product.image }}" style="margin:auto; height: 300px; width: 100%" alt="{{ product.name }}">
                         <div class="caption">
-                    <h2><strong>{{ product.quantity * product.price | currency:undefined:0}}</strong></h2>
-                    <h3>({{ product.quantity }}) {{ product.name }}</h3>
+                    <h2><strong>{{ product.stock * product.price | currency:undefined:0}}</strong></h2>
+                    <h3>({{ product.stock }}) {{ product.name }}</h3>
                     <h4>
-                        <small>{{ product.unit_value }} {{ product.unit_name }} c/u</small>
+                        <small>{{ product.unit_value }} {{ product.unit }} c/u</small>
                     </h4>
                 </div>
                     </slide>

@@ -14,15 +14,31 @@ def product_to_json(product):
         'id': product.id,
         'name': product.name,
         'price': product.price,
-        'image_url': product.image_url,
+        'unit': product.unit_name,
+        'image': product.image_url,
+        'stock': product.quantity,
         'unit_value': product.unit_value,
-        'unit_name': product.unit_name,
         'description': product.description,
-        'quantity': product.quantity,
         'nameFarm': product.farm.name
     }
     return object
 
+'''
+    Transform product to json format
+'''
+
+
+def product_to_json_rest(product):
+    object = {
+        'id': str(product.id),
+        'name': product.name,
+        'price': float(product.price),
+        'unit': product.unit_name,
+        'premium': product.premium,
+        'image': product.image_url,
+        'stock': product.quantity
+    }
+    return object
 
 '''
     Method returning all products
@@ -35,6 +51,20 @@ def get_products_from_model():
 
     for p in Product.objects.all():
         products.append(product_to_json(p))
+
+    return products
+
+'''
+    Method returning all products
+'''
+
+
+def get_products_from_model_rest():
+
+    products = []
+
+    for p in Product.objects.all():
+        products.append(product_to_json_rest(p))
 
     return products
 

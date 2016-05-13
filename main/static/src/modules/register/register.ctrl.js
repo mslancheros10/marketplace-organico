@@ -16,6 +16,12 @@
             farm_address:''
         };
 
+        $scope.newClient = {
+            username:'',
+            password:'',
+            email:''
+        };
+
 
         function responseError(response) {
             console.log(response);
@@ -25,9 +31,27 @@
         this.registerProvider = function () {
             return registerService.registerProvider($scope.newProvider).then(function (response) {
                 console.log(response);
-                window.location.assign('#/main');
-                window.location.reload(true);
-                alert('Registro Exitoso!. Espera la confirmación por parte de nosotros para ser activado en el sistema.');
+                $('#msgModal .close').attr("onclick","window.location.assign('#/main');window.location.reload(true)");
+                $('#msgModal .modal-title').html("Registro Exitoso!")
+                $('#msgModal .modal-body').html("Espera la confirmación por parte de nosotros para ser activado en el sistema.")
+                $('#mostrarModal').click();
+            }, responseError);
+        };
+
+        this.registerClient = function () {
+            return registerService.registerClient($scope.newClient).then(function (response) {
+                console.log(response);
+                if(response.data.status=='OK'){
+                    $('#msgModal .close').attr("onclick","window.location.assign('#/main');window.location.reload(true)");
+                    $('#msgModal .modal-title').html("Registro Exitoso!")
+                    $('#msgModal .modal-body').html("Espera la confirmación por parte de nosotros para ser activado en el sistema.")
+
+                }else{
+                    $('#msgModal .modal-title').html("Error!")
+                    $('#msgModal .modal-body').html(response.data.status)
+                }
+                $('#mostrarModal').click();
+
             }, responseError);
         };
 
@@ -45,6 +69,8 @@
         };
 
         this.enableClientRegister = function () {
+            $scope.newClient.username = ''
+            $scope.newClient.password = ''
             this.showRegisterProvider = false;
         };
 

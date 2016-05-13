@@ -6,7 +6,7 @@
         this.getProducts = function () {
             return $http({
                 method: 'GET',
-                url: '/products'
+                url: '/allProducts'
             });
         };
 

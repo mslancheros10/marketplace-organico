@@ -18,6 +18,14 @@
             });
         };
 
+        this.registerClient = function (client) {
+            return $http({
+                method: 'POST',
+                url: 'register/client',
+                data: client
+            });
+        };
+
 
     }]);
 })(window.angular);
