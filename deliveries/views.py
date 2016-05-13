@@ -17,3 +17,12 @@ def get_dates(request):
         return JsonResponse(response, safe=False)
 
 
+@csrf_exempt
+def get_dates_rest(request):
+    if request.method == 'GET':
+        user = request.user
+        response = business_logic.get_delivery_dates_rest(user)
+
+        return JsonResponse(response, safe=False)
+
+
