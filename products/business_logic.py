@@ -107,24 +107,29 @@ def get_products_farm(user):
 '''
     Method add product of farm
 '''
-def addProduct(user):
+def addProduct(user, id, unit_name, unit_value, price, quantity):
 
     print 'Entro BL addProduct'
 
-    product = Product()
+    product = Product();
+
+    productActual = Product.objects.get(id=id)
+
     farm = Farm.objects.all().filter(provider__active=True)\
         .only('name','latitude','longitude','size','provider__certificado')\
         .filter(provider__user=user)
 
-    product.name = 'Apio'
-    product.price = '1000'
-    product.image_url = ''
-    product.unit_value = '10'
-    product.unit_name = 'libras'
-    product.farm = farm[0]
-    product.description = 'Apio'
-    product.quantity = '50'
+    print 'Image: ' + productActual.image_url
 
-    product.save()
+    product.image_url = productActual.image_url
+    product.description = productActual.description
+    product.name = productActual.name
+    product.price = price
+    product.unit_value = unit_value
+    product.unit_name = unit_name
+    product.farm = farm[0]
+    product.quantity = quantity
+
+    '''product.save()'''
 
     return product
