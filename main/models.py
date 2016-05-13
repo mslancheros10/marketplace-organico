@@ -25,6 +25,7 @@ class Product(models.Model):
     farm = models.ForeignKey(Farm,null=True)
     description = models.CharField(max_length=200,blank=True)
     quantity = models.IntegerField(blank=True,null=True)
+    premium = models.BooleanField(default=False)
 
 class Basket(models.Model):
     name = models.CharField(max_length=100,blank=True)
