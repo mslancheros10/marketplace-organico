@@ -137,11 +137,11 @@
                             <div class="cart-item-div ng-scope" ng-repeat="product in record.products ">
                                 <div class="qty cart-item-cell">{{ record.quantity }}</div>
                                 <div class="image cart-item-cell">
-                                   <img ng-src="{{ product.image_url }}" style="margin:auto; height: 300px; width: 100%" alt="{{ product.name }}">
+                                   <img ng-src="{{ product.image }}" style="margin:auto; height: 300px; width: 100%" alt="{{ product.name }}">
                                 </div>
                                 <div class="name cart-item-cell">
                                     <div>{{ product.name }}</div>
-                                    <small>{{ product.unit_value }} {{ product.unit_name }}</small>
+                                    <small>{{ product.unit_value }} {{ product.unit }}</small>
                                 </div>
                                 <div class="price cart-item-cell">
                                    <label>{{ record.quantity * product.price | currency:undefined:0}} </label>
@@ -417,12 +417,12 @@
             <div class="col-md-4 col-sm-6 col-lg-4 well" style="padding: 5px;">
                 <div class="caption">
                     <h4 align="center"><strong>{{ product.name }}</strong></h4>
-                    <img ng-src="{{ product.image_url }}" style="margin:auto; height: 280px; width: 90%"
+                    <img ng-src="{{ product.image }}" style="margin:auto; height: 280px; width: 90%"
                          alt="{{ product.name }}">
                     <div class="caption">
                         <h2><strong>{{ product.price | currency:undefined:0}}</strong></h2>
                         <h4>
-                            <small>{{ product.unit_value }} {{ product.unit_name }}</small>
+                            <small>{{ product.unit_value }} {{ product.unit }}</small>
                         </h4>
                     </div>
                     <p>
@@ -439,17 +439,17 @@
                 <h4 class="modal-title">{{ details.name }}</h4>
               </div>
               <div class="modal-body">
-                  <img ng-src="{{ details.image_url }}"
+                  <img ng-src="{{ details.image }}"
                          alt="{{ details.name }}">
                     <div class="caption">
                         <h2><strong>{{ details.price | currency:undefined:0}}</strong></h2>
                         <h4>
-                            <small>{{ details.unit_value }} {{ details.unit_name }}</small>
+                            <small>{{ details.unit_value }} {{ details.unit }}</small>
                         </h4>
                         <div class="descripcion">
                             <h5><small>{{ details.description}}</small></h5>
                         </div>
-                        <h4><strong>Stock: {{ details.quantity*details.unit_value }} {{ details.unit_name}}</strong></h4>
+                        <h4><strong>Stock: {{ details.stock*details.unit_value }} {{ details.unit}}</strong></h4>
                     </div>
               </div>
               <div class="modal-footer">

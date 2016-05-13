@@ -16,7 +16,7 @@
 
 
 
-    <br><br>
+<br><br>
 
 <div id="productsTable">
 
@@ -103,6 +103,19 @@
 
                         <input class="btn btn-lg btn-success btn-block" ng-click="addMyProduct()" type="submit" value="Aceptar" style="width: 30%">
 
+
+    <pagination ng-model="currentPage" total-items="products.length" max-size="maxSize" boundary-links="true"/>
+        <div ng-repeat="product in filteredProducts | filter: search">
+            <div class="col-md-4 col-sm-6 col-lg-4 well" style="padding: 5px;">
+                <div class="caption">
+                    <h4 align="center"><strong>{{ product.name }}</strong></h4>
+                    <img ng-src="{{ product.image }}" style="margin:auto; height: 280px; width: 90%"
+                         alt="{{ product.name }}">
+                    <div class="caption">
+                        <h2><strong>{{ product.price | currency:undefined:0}}</strong></h2>
+                        <h4>
+                            <small>{{ product.unit_value }} {{ product.unit }}</small>
+                        </h4>
                     </div>
               </div>
 
