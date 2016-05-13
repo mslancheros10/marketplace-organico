@@ -3,6 +3,8 @@
 
     mod.controller('productsCtrl', ['$scope', 'productsService', '$window', '$filter',  function ($scope, productsService, $window, $filter) {
 
+        var precio = 0;
+
         $scope.loading = true;
 
         $scope.filteredProducts = [];
@@ -64,9 +66,24 @@
         };
 
 
-        this.getProductsFarm = function (user) {
+        $scope.addMyProduct = function () {
+            var id = "1";
+            var unitName = "libras";
+            var unitValue = "600";
+            var price = "6000";
+            var quantity = "60";
 
-            return productsService.getProductsFarm(user).then(function (response) {
+
+            return productsService.addProduct(id, unitName, unitValue, price, quantity).then(function (response) {
+                $scope.product = response.data;
+            }, responseError);
+
+        };
+
+
+        this.getProductsFarm = function () {
+
+            return productsService.getProductsFarm().then(function (response) {
 
                 $scope.loading = false;
                 console.log(response);
@@ -92,6 +109,49 @@
 
         };
 
+
+
+        var setProductsFarm = function(){
+
+        var url_submit = '/productsFarm';
+        var url_mod = 'id';
+
+        $.ajax({type:'GET',async:true,url:url_submit,
+            error:function(jqXHR,textStatus,errorThrown){
+               alert('error');
+            },
+            success:function(data,textStatus,jqXHR){
+                   $('#table-products').bootstrapTable(
+                        {   data:data,
+                            columns:[
+                                {field:'image_url',
+                                    formatter:function(value,row,index){return '<img src='+value+' alt="Smiley face" height="42" width="42">';}},
+                                {field:'name',
+                                    formatter:function(value,row,index){return value;}},
+                                {field:'description',
+                                    formatter:function(value,row,index){return value;}},
+                                {field:'price',
+                                    formatter:function(value,row,index){return value;}},
+                                {field:'id',
+                                    formatter:function(value,row,index){return '<div style="text-align:center"><a href="'+url_mod.replace('id',row.id)+'" > <i class="fa fa-pencil"></i> </a></div>';}},
+                                {field:'id',
+                                    formatter:function(value,row,index){return '<div style="text-align:center"><a href="'+url_mod.replace('id',row.id)+'" data-role="disabled"> <i class="fa fa-trash"></i> </a></div>';}}
+                            ],
+
+                            pagination:true,
+                            pageSize:10,
+                            per_page: 100,
+                            sortable:true,
+                            striped:true,
+                            sidePagination:'client',
+                        }
+                    );
+
+            }})
+    }
+
+
+    angular.element(document).ready(function(){setProductsFarm()});
 
 
 

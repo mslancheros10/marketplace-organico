@@ -40,10 +40,11 @@ urlpatterns = [
     url(r'^deliveries', deliveries.views.get_dates, name='deliveries'),
     url(r'^register/provider', session.views.register_provider, name='registerProvider'),
     url(r'^register/client', session.views.register_client, name='registerClient'),
-    url(r'^productsFarm/(\d+)', products.views.get_products_farm, name='productsFarm'),
+    url(r'^productsFarm', products.views.get_products_farm, name='productsFarm'),
     url(r'^comments', session.views.comments, name='comments'),
-    url(r'^addProductFarm/(\d+)/(.+)', products.views.addProductFarm, name='addProductFarm'),
     url(r'^client/update', session.views.update_client, name='updateClient'),
     url(r'^client', session.views.get_client, name='client'),
     url(r'^cart/add', shoppingItems.views.addProduct_rest, name='addProductRest'),
+    url(r'^addProductFarm/(\d+)/(.+)/(.+)/(.+)/(.+)', products.views.addProductFarm, name='addProductFarm'),
+    url(r'^order/schedule', deliveries.views.get_dates_rest, name='order/schedule'),
 ]

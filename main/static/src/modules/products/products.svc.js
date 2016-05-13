@@ -24,10 +24,17 @@
             });
         };
 
-        this.getProductsFarm = function (user) {
+        this.getProductsFarm = function () {
             return $http({
                 method: 'GET',
-                url: '/productsFarm/'+user
+                url: '/productsFarm'
+            });
+        };
+
+        this.addProduct = function (id,unitName,unitValue,price,quantity) {
+            return $http({
+                method: 'GET',
+                url: '/addProductFarm/'+id+'/'+unitName+'/'+unitValue+'/'+price+'/'+quantity
             });
         };
 
