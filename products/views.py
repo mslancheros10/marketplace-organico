@@ -58,14 +58,17 @@ def get_products_farm(request):
     Add product to Farm
 '''
 @csrf_exempt
-def addProductFarm(request):
+def addProductFarm(request, id, unit_name, unit_value, price, quantity):
 
-    if request.method == 'POST':
+    print 'Entro View Product: ' + id + price
+
+    if request.method == 'GET':
         if request.user.is_authenticated():
             user = request.user
         else:
             user = None
 
-        response = business_logic.addProduct(user)
+
+        response = business_logic.addProduct(user, id, unit_name, unit_value, price, quantity)
 
         return JsonResponse("OK", safe=False)
