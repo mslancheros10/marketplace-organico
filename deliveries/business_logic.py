@@ -17,6 +17,29 @@ def delivery_to_json(delivery):
     return object
 
 
+'''
+    Transform delivery to json format
+'''
+def delivery_to_json_rest(delivery):
+    object = {
+        'id': delivery.id,
+        'description': delivery.date
+    }
+    return object
+
+
+
+'''
+    Method returning dates of delivery rest
+'''
+def get_delivery_dates_rest(user):
+
+    delivery = []
+
+    for d in Delivery.objects.all():
+        delivery.append(delivery_to_json_rest(d))
+
+    return delivery
 
 
 '''
