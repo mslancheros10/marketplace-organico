@@ -31,5 +31,13 @@
             });
         };
 
+        this.addProduct = function (data) {
+            return $http({
+                method: 'POST',
+                url: '/addProductFarm',
+                data:data
+            });
+        };
+
     }]);
 })(window.angular);
