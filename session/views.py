@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-
+import sendgrid
 from django.core.mail import send_mail, EmailMultiAlternatives
 
 import business_logic
@@ -190,21 +190,21 @@ def update_client(request):
 @csrf_exempt
 def comments(request):
     if request.method == 'POST':
+        client = sendgrid.SendGridClient("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")
+        message = sendgrid.Mail()
+
         userEmail = request.user.email
         objs = json.loads(request.body)
         comment = objs['comment']
 
         comentario = "<strong>Comentario:</strong> %s <br><br><strong>Enviado por:</strong> %s" % (comment, userEmail)
 
-        emailComentario = 'grupo5procesos2016@gmail.com'
-        asunto = 'MpOrganico - Comentario'
-        text_content = ''
-        html_content = comentario
-        from_email = userEmail
-        to = emailComentario
 
-        mensaje = EmailMultiAlternatives(asunto, text_content, from_email, [to])
-        mensaje.attach_alternative(html_content, "text/html")
-        mensaje.send()
+        message.add_to("grupo5procesos2016@gmail.com")
+        message.set_from("app49692001@heroku.com")
+        message.set_subject("Mp Organico - Comentario")
+        message.set_html(comentario)
+
+        client.send(message)
 
     return JsonResponse({})
