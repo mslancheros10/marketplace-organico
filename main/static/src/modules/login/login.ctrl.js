@@ -18,11 +18,12 @@
                 $scope.loading = false;
                 $scope.message = response.data;
                 console.log('logged  = ' + $scope.message)
-                if($scope.message.message !== 'OK'){
+                if($scope.message.status !== 'OK'){
                     console.log('error')
                     $scope.error = true;
                 }else {
                     $scope.error = false;
+                    $scope.user = {};
                     $scope.user = {};
                     $('#loginModal').modal('hide')
                     window.location.assign('#/main');

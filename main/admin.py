@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from main.models import Farm, Product, Basket, ShoppingItem, Provider
+from main.models import Farm, Product, Basket, ShoppingItem, Provider, Client, Delivery
 
 # Register your models here.
 # admin.site.register(Provider)
@@ -12,7 +12,7 @@ from main.models import Farm, Product, Basket, ShoppingItem, Provider
 
 @admin.register(Provider)
 class AdminProvider(admin.ModelAdmin):
-        list_display = ('user','certificado',)
+        list_display = ('user','active','certificado')
         List_Filter = ('user',)
 
 @admin.register(Farm)
@@ -34,3 +34,14 @@ class AdminBasket(admin.ModelAdmin):
 class AdminShoppingItem(admin.ModelAdmin):
         list_display = ('quantity', 'user','product', 'basket', 'state', 'session', 'create_date',)
         List_Filter = ('state', 'user', 'product', 'basket',)
+
+@admin.register(Client)
+class AdminProvider(admin.ModelAdmin):
+        list_display = ('user','address','phone','active')
+        List_Filter = ('user',)
+
+
+@admin.register(Delivery)
+class AdminDelivery(admin.ModelAdmin):
+        list_display = ('date','day','address','phone')
+        List_Filter = ('date',)

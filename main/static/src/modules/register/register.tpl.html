@@ -1,0 +1,127 @@
+<!-- Modals -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="msgModal">
+        <div class="container">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button id="id_button_close" type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">Procesando...</div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+<!-- Header -->
+<header style="font-size:8px height:300px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="intro-text">
+                    <span class="name">MarketPlace Orgánico</span>
+                    <hr class="star-light">
+                    <span class="skills">Tu lugar favorito</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container" ng-controller="registerCtrl as ctrl" style="margin-top: 3%">
+
+    <div class="btn-group btn-group-justified">
+        <a href="#/register" ng-click="ctrl.enableClientRegister()" class="btn btn-lg btn-success btn-block">SOY CLIENTE</a>
+        <a href="#/register" ng-click="ctrl.enableProviderRegister()" class="btn btn-lg btn-success btn-block">SOY PRODUCTOR</a>
+    </div>
+
+    <div id="idRegisterClient" ng-hide="ctrl.showRegisterProvider">
+        <!-- //TODO: Vista de registro consumidor -->
+        <div class="alert alert-danger" ng-if="error">
+            Diligencia todos los campos
+        </div>
+        <h3 class="control-label" for="client">Información Cliente</h3>
+        <form id="formClient" name="formClient">
+            <div class="form-group">
+                <label class="control-label" for="username">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" ng-model="newClient.username" ng-required="true">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="password">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" ng-model="newClient.password" ng-required="true">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="email">E-mail:</label>
+                <input type="email" id="email" name="email" class="form-control" ng-model="newClient.email">
+            </div>
+
+            <button type="submit" ng-disabled="formClient.$invalid" class="btn btn-primary" ng-click="ctrl.registerClient()">Registrarme</button>
+            <a href="#/main" class="btn btn-default">Volver</a>
+        </form>
+
+    </div>
+
+    <div id="idRegisterProvider" ng-show="ctrl.showRegisterProvider">
+        <div class="alert alert-danger" ng-if="error">
+            Diligencia todos los campos
+        </div>
+
+        <h3 class="control-label" for="farms">Información Productor</h3>
+
+        <div class="form-group">
+            <label class="control-label" for="username">Username:</label>
+            <input type="text" id="username" name="username" class="form-control" ng-model="newProvider.username">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="password">Password:</label>
+            <input type="password" id="password" name="password" class="form-control" ng-model="newProvider.password">
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="certified">¿Es un productor certificado?:</label>
+            <input type="checkbox" ng-model="newProvider.certified">
+        </div>
+
+        <h3 class="control-label" for="farms">Finca Principal del productor</h3>
+
+        <div class="form-group">
+            <label class="control-label" for="farmName">Nombre de la finca:</label>
+            <input type="text" id="idProviderFarmName" name="providerFarmName" class="form-control"
+                   ng-model="newProvider.farm_name">
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="sizeFarm">Tamaño de la Finca en hectáreas:</label>
+            <input type="number" id="sizeFarm" min="1" name="sizeFarm" class="form-control" value="1"
+                   ng-model="newProvider.farm_size">
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="dir">Escribe tu dirección:</label>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="text" id="newAddress" name="newAddress" class="form-control"
+                           ng-model="newProvider.farm_address">
+                </div>
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-success" ng-click="ctrl.geocoderAddress()">ACTUALIZAR MAPA
+                    </button>
+                </div>
+            </div>
+            <div id="idFarmMap" style="margin-top: 3%">
+                <img onmousemove="" style="margin:auto; height: 600px; width: auto"
+                     src="https://maps.googleapis.com/maps/api/staticmap?center=0,0&zoom=13&size=300x300&maptype=roadmap&markers=color:red%7Clabel:C%7C0,0&key=AIzaSyCL1qoAd2fWDwWM8y-SyngJ42ywrReHAEM">'
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-primary" ng-click="ctrl.registerProvider()">Registrarme</button>
+        <a href="#/main" class="btn btn-default">Volver</a>
+    </div>
+
+
+</div>
+    <a id="mostrarModal" class="navbar-brand" href="#/register" data-toggle="modal" data-target="#msgModal"></a>
+
+
+</div>

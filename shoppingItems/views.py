@@ -121,3 +121,72 @@ def deleteProduct(request, id):
 
         return JsonResponse(response,safe=False)
 
+@csrf_exempt
+def addProduct_rest(request):
+    status = 'Error'
+    message = 'No se pudo agregar el producto al carrito.'
+    existItem = True
+    existProduct= True
+    product = None
+
+    if request.method == 'PUT':
+        objs = json.loads(unicode(request.body, "utf-8" ))
+        username  = objs['username']
+        id_product  = objs['id_product']
+        quantity  = objs['quantity']
+
+        if(username <> "" and id_product <> "" and quantity > 0):
+            if request.user.is_authenticated():
+                if username == request.user.username:
+                    idUser = request.user.id
+                    idProducto = int(id_product)
+
+                    'Se consulta si el producto ya se agrego al carrito para un usuario especifico en caso de que si entonces se aumenta en X la cantidad del mismo '
+                    try:
+                        shopItem = ShoppingItem.objects.get(product=idProducto, state = 'activo', user=idUser)
+                    except ShoppingItem.DoesNotExist:
+                        existItem = False
+
+                    try:
+                        product = Product.objects.get(id=idProducto)
+                    except ObjectDoesNotExist:
+                        existProduct = False
+
+                    if existItem:
+                        shopItem.quantity += quantity
+                        shopItem.save()
+                        status = 'OK'
+                    else:
+                        if existProduct:
+                            shopItem = ShoppingItem()
+                            shopItem.quantity = quantity
+                            shopItem.state = 'activo'
+                            shopItem.product = product
+
+                            if idUser > -1:
+                                user = User.objects.get(id=idUser)
+                                shopItem.user = user
+                                shopItem.save()
+                                status = 'OK'
+                        else:
+                            message = 'El producto no existe.'
+
+                    if(status == 'OK'):
+                        message = 'Agregado al Carrito.'
+                else:
+                    message = 'El username no coincide con el del usuario autenticado.'
+            else:
+                message = 'El usuario no se encuentra autenticado.'
+        else:
+            message = 'Los parametros de entradas estan incompletos.'
+    else:
+        message = 'Se requiere hacer la solicitud mediante el metodo PUT.'
+
+
+
+
+
+
+
+    return JsonResponse({'status': status, 'message': message})
+

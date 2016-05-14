@@ -7,6 +7,7 @@ from django.utils import timezone
 class Provider(models.Model):
     user = models.OneToOneField(User,null=True)
     certificado = models.BooleanField(default=False)
+    active = models.BooleanField(default=False)
 
 class Farm(models.Model):
     name = models.CharField(max_length=100,blank=True)
@@ -24,6 +25,7 @@ class Product(models.Model):
     farm = models.ForeignKey(Farm,null=True)
     description = models.CharField(max_length=200,blank=True)
     quantity = models.IntegerField(blank=True,null=True)
+    premium = models.BooleanField(default=False,blank=True)
 
 class Basket(models.Model):
     name = models.CharField(max_length=100,blank=True)
@@ -57,3 +59,9 @@ class Delivery(models.Model):
     day = models.CharField(max_length=30, null=True, blank=True)
     address = models.CharField(max_length=80, null=True, blank=True)
     phone = models.CharField(max_length=10, null=True, blank=True)
+
+class Client(models.Model):
+    user = models.OneToOneField(User,null=True)
+    address = models.CharField(max_length=100, null=True, blank=True)
+    phone = models.CharField(max_length=30, null=True, blank=True)
+    active = models.BooleanField(default=False)
