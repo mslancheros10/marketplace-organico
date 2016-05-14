@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from main.models import Product, User
 from django.core.exceptions import ObjectDoesNotExist
@@ -6,6 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 import json
 
 import business_logic
+from django.conf import settings
 
 '''
     REST Service retrieving current baskets
@@ -72,3 +73,20 @@ def addProductFarm(request, id, unit_name, unit_value, price, quantity):
         response = business_logic.addProduct(user, id, unit_name, unit_value, price, quantity)
 
         return JsonResponse(response, safe=False)
+
+@csrf_exempt
+def add_product_list(request):
+    if request.user.is_superuser:
+        return HttpResponseRedirect('/#/addProducts/')
+    else:
+        return HttpResponseRedirect('/admin/')
+
+@csrf_exempt
+def register_product_list(request):
+    if request.user.is_superuser:
+        objs = json.loads(request.body)
+        business_logic.register_products(objs['list'])
+        return HttpResponse('OK')
+    else:
+        return HttpResponse('FAILADMIN')
+
