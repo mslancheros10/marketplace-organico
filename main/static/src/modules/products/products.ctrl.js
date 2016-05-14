@@ -87,7 +87,7 @@
 
                 console.log(response.data);
 
-                document.getElementById("addProduct").style.display="none";
+
 
                 $('#table-products').bootstrapTable('load', response.data);
 

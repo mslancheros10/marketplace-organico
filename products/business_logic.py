@@ -130,7 +130,7 @@ def addProduct(user, id, unit_name, unit_value, price, quantity):
     product.farm = farm[0]
     product.quantity = quantity
 
-    '''product.save()'''
+    product.save()
 
     listProduct = get_products_farm(user);
 
