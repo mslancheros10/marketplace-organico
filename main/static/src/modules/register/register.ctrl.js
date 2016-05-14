@@ -44,7 +44,7 @@
                 if(response.data.status=='OK'){
                     $('#msgModal .close').attr("onclick","window.location.assign('#/main');window.location.reload(true)");
                     $('#msgModal .modal-title').html("Registro Exitoso!")
-                    $('#msgModal .modal-body').html("Espera la confirmación por parte de nosotros para ser activado en el sistema.")
+                    $('#msgModal .modal-body').html("Ya puedes ingresar y disfrutar de los servicios del sistema.")
 
                 }else{
                     $('#msgModal .modal-title').html("Error!")
