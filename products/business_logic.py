@@ -115,11 +115,9 @@ def addProduct(user, id, unit_name, unit_value, price, quantity):
 
     productActual = Product.objects.get(id=id)
 
-    farm = Farm.objects.all().all()\
-        .only('name','latitude','longitude','size','provider__certificado')\
+    farm = Farm.objects.all()\
+        .only('name','latitude','longitude','size','provider__user')\
         .filter(provider__user=user)
-
-    print 'Image: ' + productActual.image_url
 
     product.image_url = productActual.image_url
     product.description = productActual.description
