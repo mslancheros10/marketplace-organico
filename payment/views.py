@@ -46,9 +46,9 @@ def pay_cart_rest(request):
 
 @csrf_exempt
 def view_order_rest(request):
-    user = request.user
     if request.method == 'GET':
-        if user is None:
+        user = request.user
+        if user.is_anonymous():
             print 'No hay Usuario Creado'
             return JsonResponse({})
         else:
