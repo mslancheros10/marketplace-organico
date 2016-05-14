@@ -40,6 +40,11 @@
 
 
 <div class="modal fade" tabindex="-1" role="dialog" id="addProductModal" ng-controller="productsCtrl as ctrl" ng-init="ctrl.getProducts()">
+
+    <div align="center">
+        <img align="center" id="mySpinner" src="static/src/modules/main/img/spinner.gif" ng-show="loading"/>
+    </div>
+
     <div class="modal-dialog">
         <div class="modal-content">
               <div class="modal-header">
