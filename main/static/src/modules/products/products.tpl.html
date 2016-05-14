@@ -55,15 +55,15 @@
                                 <tr>
                                     <th>
                                     Seleccionar Producto:</th><td><div>
-                                    <select ng-model="products" class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" required>
-                                         <option  ng-selected="newProd.idProduct == option.id" ng-value="option.id" ng-repeat="option in filteredProducts">{{option.name}}</option>
+                                    <select class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" ng-model="newProd.idProduct" required>
+                                         <option  ng-repeat="option in filteredProducts" value="{{option.id}}">{{option.name}}</option>
                                     </select></div></td>
                                 </tr>
 
                                 <tr>
                                     <th>
                                         Tipo Unidad:</th><td><div>
-                                        <select ng-model="expMM"  class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" ng-model="newProd.unit_name" required>
+                                        <select class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" ng-model="newProd.unit_name" required>
                                             <option value='Kilo'>Kilo</option>
                                             <option value='Gramo'>Gramo</option>
                                             <option value='Litro'>Litro</option>
