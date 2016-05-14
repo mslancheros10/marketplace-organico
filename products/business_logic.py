@@ -2,6 +2,7 @@ from math import fabs
 
 from main.models import Product, Farm
 import json
+from math import fabs
 
 from django.utils import timezone
 
