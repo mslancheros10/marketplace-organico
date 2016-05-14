@@ -41,8 +41,6 @@ class ShoppingItem(models.Model):
     session = models.CharField(max_length=50, null=True, blank=True)
     create_date = models.DateTimeField(null=True,blank=True, default=timezone.now)
 
-    def __str__(self):
-        return 'El shoppItem se creo de manera correcta.'
 
     class Meta:
         verbose_name = 'ShoppingItem'

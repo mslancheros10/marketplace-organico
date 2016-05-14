@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from main.models import Product, Basket, ShoppingItem, User
 from django.core.exceptions import ObjectDoesNotExist
@@ -47,10 +47,10 @@ def pay_cart_rest(request):
 @csrf_exempt
 def view_order_rest(request):
     if request.method == 'GET':
-        user = request.user
+        user = authenticate(username='admin', password='administrador')
         if user.is_anonymous():
             print 'No hay Usuario Creado'
             return JsonResponse({},safe=False)
         else:
             list=business_logic.purchsed_items(user)
-            return JsonResponse(list,safe=False)
+            return JsonResponse(list, safe=False)

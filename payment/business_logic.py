@@ -1,6 +1,7 @@
 from main.models import ShoppingItem, Product, User, Payment
 from baskets import business_logic as Bask
 from products import business_logic as Prod
+from shoppingItems import business_logic as shp
 
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -23,16 +24,6 @@ def pay_cart(user):
 def update_number_of_items(temp):
     price = 0
     for t in temp:
-        '''
-        for b in t.baskets:
-            if b.quantity-t.quantity >=0:
-                b.quantity= b.quantity - t.quantity
-                price = price + (b.price*t.quantity)
-            else:
-                b.quantity=0
-            price = price + (b.price*t.quantity)
-            b.save()
-            '''
         if t.product is not None:
             if t.product.quantity-t.quantity >=0:
                 t.product.quantity= t.product.quantity - t.quantity
@@ -60,16 +51,7 @@ def pay_cart_rest(user):
 def update_number_of_items_rest(temp):
     price = 0
     for t in temp:
-        '''
-        for b in t.baskets:
-            if b.quantity-t.quantity >=0:
-                b.quantity= b.quantity - t.quantity
-                price = price + (b.price*t.quantity)
-            else:
-                b.quantity=0
-            price = price + (b.price*t.quantity)
-            b.save()
-            '''
+
         if t.product is not None:
             if t.product.quantity == 0:
                 return None
@@ -82,11 +64,10 @@ def update_number_of_items_rest(temp):
     return price
 
 def purchsed_items(user):
+
     payment = Payment.objects.all().filter(user=user)
     if not payment:
         temp = []
     else:
-        temp = ShoppingItem.objects.all()\
-            .filter(state='activo', user=user.id)
+        temp = shp.get_shoppingItems_from_model(user.id)
     return temp
-
