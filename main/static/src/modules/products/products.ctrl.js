@@ -157,9 +157,9 @@
                                     {field:'price',
                                         formatter:function(value,row,index){return value;}},
                                     {field:'id',
-                                        formatter:function(value,row,index){return '<div style="text-align:center"><a href="'+url_mod.replace('id',row.id)+'" > <i class="fa fa-pencil"></i> </a></div>';}},
+                                        formatter:function(value,row,index){return '<div style="text-align:center"><i class="fa fa-pencil"></i> </a></div>';}},
                                     {field:'id',
-                                        formatter:function(value,row,index){return '<div style="text-align:center"><a href="'+url_mod.replace('id',row.id)+'" data-role="disabled"> <i class="fa fa-trash"></i> </a></div>';}}
+                                        formatter:function(value,row,index){return '<div style="text-align:center"><i class="fa fa-trash"></i> </a></div>';}}
                                 ],
 
                                 pagination:false,
