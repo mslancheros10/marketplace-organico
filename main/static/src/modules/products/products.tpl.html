@@ -20,7 +20,7 @@
 
 <div id="productsTable">
 
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addProduct" ng-click="" style="margin-left: auto; margin-right: auto"><strong>Adicionar</strong></button>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addProductModal" ng-click="" style="margin-left: auto; margin-right: auto"><strong>Adicionar</strong></button>
 
     <table id="table-products" class="table table-hover" style="width: 60%; margin-left: auto; margin-right: auto">
           <thead>
@@ -39,7 +39,7 @@
 
 
 
-<div class="modal fade" tabindex="-1" role="dialog" id="addProduct" ng-controller="productsCtrl as ctrl" ng-init="ctrl.getProducts()">
+<div class="modal fade" tabindex="-1" role="dialog" id="addProductModal" ng-controller="productsCtrl as ctrl" ng-init="ctrl.getProducts()">
     <div class="modal-dialog">
         <div class="modal-content">
               <div class="modal-header">
@@ -56,7 +56,7 @@
                                     <th>
                                     Seleccionar Producto:</th><td><div>
                                     <select class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" ng-model="newProd.idProduct" required>
-                                         <option  ng-repeat="option in filteredProducts" value="{{option.id}}">{{option.name}}</option>
+                                         <option  ng-repeat="option in products" value="{{option.id}}">{{option.name}}</option>
                                     </select></div></td>
                                 </tr>
 

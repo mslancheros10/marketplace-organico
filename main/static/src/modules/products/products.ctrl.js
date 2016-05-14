@@ -81,13 +81,15 @@
             var price = $scope.newProd.price;
             var quantity = $scope.newProd.quantity;
 
-            console.log('Entro newProd: ' + $scope.newProd.idProduct)
+            document.getElementById("addProductModal").style.display="none";
+            var fades = document.getElementsByClassName("modal-backdrop fade in");
+            for (var i = 0; i < fades.length; i++) {
+                fades[i].style.display="none";
+            }
 
             return productsService.addProduct(id, unitName, unitValue, price, quantity).then(function (response) {
 
                 console.log(response.data);
-
-
 
                 $('#table-products').bootstrapTable('load', response.data);
 
