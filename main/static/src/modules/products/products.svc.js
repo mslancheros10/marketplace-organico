@@ -55,5 +55,22 @@
             });
         };
 
+        this.regsisterList = function (data) {
+            return $http({
+                method: 'POST',
+                url: '/registerProductList',
+                data: data
+            }).success(function (response) {
+                if(response=='OK'){
+                    $location.path('main');
+
+                }else{
+                    alert("Debe iniciar sesión como administrador para realizar esta tarea.")
+                }
+            }).error(function (response) {
+                alert("La lista de entrada tiene errores.")
+            });
+        };
+
     }]);
 })(window.angular);
