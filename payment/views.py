@@ -50,7 +50,7 @@ def view_order_rest(request):
         user = request.user
         if user.is_anonymous():
             print 'No hay Usuario Creado'
-            return JsonResponse({})
+            return JsonResponse({},safe=False)
         else:
             list=business_logic.purchsed_items(user)
-            return JsonResponse(list)
+            return JsonResponse(list,safe=False)
