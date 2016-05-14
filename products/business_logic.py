@@ -115,7 +115,7 @@ def addProduct(user, id, unit_name, unit_value, price, quantity):
 
     productActual = Product.objects.get(id=id)
 
-    farm = Farm.objects.all().filter(provider__active=True)\
+    farm = Farm.objects.all().all()\
         .only('name','latitude','longitude','size','provider__certificado')\
         .filter(provider__user=user)
 
