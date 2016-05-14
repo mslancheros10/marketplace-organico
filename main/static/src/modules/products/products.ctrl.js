@@ -12,6 +12,14 @@
         $scope.numPerPage = 6;
         $scope.maxSize = 10;
 
+        $scope.newProd = {
+            idProduct:'',
+            unit_value:'',
+            price:'',
+            unit_name:'',
+            quantity:''
+        };
+
         $scope.$watch('search', function(val) {
             $scope.filteredProducts = $scope.products
             $filter('filter')($scope.filteredProducts, val);
@@ -67,15 +75,24 @@
 
 
         $scope.addMyProduct = function () {
-            var id = "1";
-            var unitName = "libras";
-            var unitValue = "600";
-            var price = "6000";
-            var quantity = "60";
+            var id = $scope.newProd.idProduct;
+            var unitName = $scope.newProd.unit_name;
+            var unitValue = $scope.newProd.unit_value;
+            var price = $scope.newProd.price;
+            var quantity = $scope.newProd.quantity;
 
+            console.log('Entro newProd: ' + $scope.newProd.idProduct)
 
             return productsService.addProduct(id, unitName, unitValue, price, quantity).then(function (response) {
+
+                console.log(response.data);
+
+                document.getElementById("addProduct").style.display="none";
+
+                $('#table-products').bootstrapTable('load', response.data);
+
                 $scope.product = response.data;
+
             }, responseError);
 
         };
@@ -113,47 +130,43 @@
 
         var setProductsFarm = function(){
 
-        var url_submit = '/productsFarm';
-        var url_mod = 'id';
+            var url_submit = '/productsFarm';
+            var url_mod = 'id';
 
-        $.ajax({type:'GET',async:true,url:url_submit,
-            error:function(jqXHR,textStatus,errorThrown){
-               alert('error');
-            },
-            success:function(data,textStatus,jqXHR){
-                   $('#table-products').bootstrapTable(
-                        {   data:data,
-                            columns:[
-                                {field:'image_url',
-                                    formatter:function(value,row,index){return '<img src='+value+' alt="Smiley face" height="42" width="42">';}},
-                                {field:'name',
-                                    formatter:function(value,row,index){return value;}},
-                                {field:'description',
-                                    formatter:function(value,row,index){return value;}},
-                                {field:'price',
-                                    formatter:function(value,row,index){return value;}},
-                                {field:'id',
-                                    formatter:function(value,row,index){return '<div style="text-align:center"><a href="'+url_mod.replace('id',row.id)+'" > <i class="fa fa-pencil"></i> </a></div>';}},
-                                {field:'id',
-                                    formatter:function(value,row,index){return '<div style="text-align:center"><a href="'+url_mod.replace('id',row.id)+'" data-role="disabled"> <i class="fa fa-trash"></i> </a></div>';}}
-                            ],
+            $.ajax({type:'GET',async:true,url:url_submit,
+                error:function(jqXHR,textStatus,errorThrown){
+                },
+                success:function(data,textStatus,jqXHR){
+                       $('#table-products').bootstrapTable(
+                            {   data:data,
+                                columns:[
+                                    {field:'image',
+                                        formatter:function(value,row,index){return '<img src="'+value+'" alt="Smiley face" height="42" width="42">';}},
+                                    {field:'name',
+                                        formatter:function(value,row,index){return value;}},
+                                    {field:'description',
+                                        formatter:function(value,row,index){return value;}},
+                                    {field:'price',
+                                        formatter:function(value,row,index){return value;}},
+                                    {field:'id',
+                                        formatter:function(value,row,index){return '<div style="text-align:center"><a href="'+url_mod.replace('id',row.id)+'" > <i class="fa fa-pencil"></i> </a></div>';}},
+                                    {field:'id',
+                                        formatter:function(value,row,index){return '<div style="text-align:center"><a href="'+url_mod.replace('id',row.id)+'" data-role="disabled"> <i class="fa fa-trash"></i> </a></div>';}}
+                                ],
 
-                            pagination:true,
-                            pageSize:10,
-                            per_page: 100,
-                            sortable:true,
-                            striped:true,
-                            sidePagination:'client',
-                        }
-                    );
+                                pagination:false,
+                                pageSize:10,
+                                per_page: 100,
+                                sortable:true,
+                                striped:true,
+                                sidePagination:'client',
+                            }
+                        );
 
-            }})
-    }
+                }})
+        }
 
-
-    angular.element(document).ready(function(){setProductsFarm()});
-
-
+        angular.element(document).ready(function(){setProductsFarm()});
 
     }]);
 })(window.angular);

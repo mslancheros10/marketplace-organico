@@ -71,4 +71,4 @@ def addProductFarm(request, id, unit_name, unit_value, price, quantity):
 
         response = business_logic.addProduct(user, id, unit_name, unit_value, price, quantity)
 
-        return JsonResponse("OK", safe=False)
+        return JsonResponse(response, safe=False)
