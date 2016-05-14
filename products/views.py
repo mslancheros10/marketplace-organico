@@ -1,4 +1,4 @@
-from django.http import JsonResponse, HttpResponseRedirect
+from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from main.models import Product, User
 from django.core.exceptions import ObjectDoesNotExist
@@ -86,7 +86,7 @@ def register_product_list(request):
     if request.user.is_superuser:
         objs = json.loads(request.body)
         business_logic.register_products(objs['list'])
-        return HttpResponseRedirect('/#/main/')
+        return HttpResponse('OK')
     else:
-        return HttpResponseRedirect('/admin/')
+        return HttpResponse('FAILADMIN')
 
