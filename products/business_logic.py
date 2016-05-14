@@ -132,4 +132,6 @@ def addProduct(user, id, unit_name, unit_value, price, quantity):
 
     '''product.save()'''
 
-    return product
+    listProduct = get_products_farm(user);
+
+    return listProduct

@@ -25,7 +25,7 @@
     <table id="table-products" class="table table-hover" style="width: 60%; margin-left: auto; margin-right: auto">
           <thead>
                 <tr class="text-center">
-                  <th data-field="image_url">Imagen</th>
+                  <th data-field="image">Imagen</th>
                   <th data-field="name">Nombre</th>
                   <th data-field="description">Descripcion</th>
                   <th data-field="price">Precio</th>
@@ -55,15 +55,15 @@
                                 <tr>
                                     <th>
                                     Seleccionar Producto:</th><td><div>
-                                    <select ng-model="products" class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" required>
-                                         <option ng-repeat="option in filteredProducts" value="{{option.id}}">{{option.name}}</option>
+                                    <select class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" ng-model="newProd.idProduct" required>
+                                         <option  ng-repeat="option in filteredProducts" value="{{option.id}}">{{option.name}}</option>
                                     </select></div></td>
                                 </tr>
 
                                 <tr>
                                     <th>
                                         Tipo Unidad:</th><td><div>
-                                        <select ng-model="expMM"  class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" required>
+                                        <select class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched" ng-model="newProd.unit_name" required>
                                             <option value='Kilo'>Kilo</option>
                                             <option value='Gramo'>Gramo</option>
                                             <option value='Litro'>Litro</option>
@@ -75,7 +75,7 @@
                                 <tr>
                                     <th>
                                         Valor Unidad:</th><td><div>
-                                        <input type="text" name="unit_value"
+                                        <input type="text" name="unit_value" ng-model="newProd.unit_value"
                                         class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched"
                                     ></div></td>
                                 </tr>
@@ -83,7 +83,7 @@
                                 <tr>
                                     <th>
                                         Precio:</th><td><div>
-                                        <input type="text" name="price" ng-model="$parent.price"
+                                        <input type="text" name="price" ng-model="newProd.price"
                                         class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched"
                                     ></div></td>
                                 </tr>
@@ -91,7 +91,7 @@
                                 <tr>
                                     <th>
                                         Cantidad:</th><td><div>
-                                        <input type="text" name="quantity"
+                                        <input type="text" name="quantity" ng-model="newProd.quantity"
                                         class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched"
                                     ></div></td>
                                 </tr>
